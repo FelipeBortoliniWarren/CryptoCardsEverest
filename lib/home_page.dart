@@ -1,81 +1,50 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/presenter/wallet/wallet_page.dart';
 
-import 'balance_user.dart';
-import 'bottom_nav_crypto.dart';
-import 'currency_data.dart';
-
-class HomePage extends StatelessWidget {
+import 'presenter/movement/movement_page.dart';
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int indexSelected = 0;
+
+  void changeIndex(int value) {
+    indexSelected = value;
+    setState(() {});
+  }
+
+  final List<Widget> pages = [
+    const WalletPage(),
+    const MovementPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(160),
-        child: BalanceUser(),
-      ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: const [
-          CurrencyData(
-            nameCripto: 'Bitcoin',
-            initialsCripto: 'BTC',
-            valueCripto: 1000,
-            iconCripto: 'assets/images/bitcoin.png',
-            amountCrypto: 75,
-          ),
-          CurrencyData(
-            nameCripto: 'Ethereum',
-            initialsCripto: 'ETH',
-            valueCripto: 0,
-            iconCripto: 'assets/images/ethereum.png',
-            amountCrypto: 75,
-          ),
-          CurrencyData(
-            nameCripto: 'Litecoin',
-            initialsCripto: 'LTC',
-            valueCripto: 0,
-            iconCripto: 'assets/images/litecoin.png',
-            amountCrypto: -0.7,
-          ),
-          CurrencyData(
-            nameCripto: 'Tether',
-            initialsCripto: 'USDT',
-            valueCripto: 0,
-            iconCripto: 'assets/images/tether.png',
-            amountCrypto: -0.7,
-          ),
-          CurrencyData(
-            nameCripto: 'BNB',
-            initialsCripto: 'BNB',
-            valueCripto: 0,
-            iconCripto: 'assets/images/bnb.png',
-            amountCrypto: -0.7,
-          ),
-          CurrencyData(
-            nameCripto: 'Cardano',
-            initialsCripto: 'ADA',
-            valueCripto: 0,
-            iconCripto: 'assets/images/cardano.png',
-            amountCrypto: -0.7,
-          ),
-          CurrencyData(
-            nameCripto: 'Polkadot',
-            initialsCripto: 'DOT',
-            valueCripto: 0,
-            iconCripto: 'assets/images/polkadot.png',
-            amountCrypto: -0.7,
-          ),
-          CurrencyData(
-            nameCripto: 'Dogecoin',
-            initialsCripto: 'DOGE',
-            valueCripto: 0,
-            iconCripto: 'assets/images/dogecoin.png',
-            amountCrypto: -0.7,
+      body: pages[indexSelected],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: const Color(0xFFE02B57),
+        onTap: changeIndex,
+        currentIndex: indexSelected,
+        items: const [
+          BottomNavigationBarItem(
+              icon: ImageIcon(
+                AssetImage('assets/images/warren.png'),
+              ),
+              label: 'Portfólio'),
+          BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage('assets/images/cent.png'),
+            ),
+            label: 'Movimentações',
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavCrypto(),
     );
   }
 }
