@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/presenter/pages/wallet/wallet_page.dart';
+import 'package:flutter_application_2/pages/portfolio/view/portfolio_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../movement/movement_page.dart';
+import '../pages/movements/view/movements_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ScaffoldPage extends StatefulWidget {
+  const ScaffoldPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ScaffoldPage> createState() => _ScaffoldPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ScaffoldPageState extends State<ScaffoldPage> {
   int indexSelected = 0;
 
   void changeIndex(int value) {
@@ -19,8 +20,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   final List<Widget> pages = [
-    const WalletPage(),
-    const MovementPage(),
+    const PortfolioPage(),
+    const MovementsPage(),
   ];
 
   @override
@@ -30,6 +31,16 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: const Color(0xFFE02B57),
         onTap: changeIndex,
+        selectedLabelStyle: GoogleFonts.montserrat(
+          fontWeight: FontWeight.w500,
+          fontSize: 12,
+          height: 1.8,
+        ),
+        unselectedLabelStyle: GoogleFonts.nunito(
+          fontWeight: FontWeight.w400,
+          fontSize: 12,
+          height: 1.8,
+        ),
         currentIndex: indexSelected,
         items: const [
           BottomNavigationBarItem(

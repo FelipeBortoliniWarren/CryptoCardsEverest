@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../../../core/providers.dart';
+import '../../../../../shared/utils/providers.dart';
 
 class FirstRowBalanceUserWidget extends StatefulHookConsumerWidget {
   const FirstRowBalanceUserWidget({Key? key}) : super(key: key);

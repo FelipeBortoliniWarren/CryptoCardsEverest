@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'presenter/pages/home/home_page.dart';
+import 'shared/scaffold_page.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Cripto Wallet',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ScaffoldPage(),
     );
   }
 }

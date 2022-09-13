@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/presenter/pages/wallet/widgets/balance_user/widgets/first_row_balance_user_widget.dart';
+import 'package:flutter_application_2/pages/portfolio/widgets/balance_user/widgets/first_row_balance_user_widget.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'widgets/second_row_balance_user_widget.dart';

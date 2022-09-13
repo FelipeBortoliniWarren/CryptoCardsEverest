@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MovementPage extends StatelessWidget {
-  const MovementPage({super.key});
+class MovementsPage extends StatelessWidget {
+  const MovementsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

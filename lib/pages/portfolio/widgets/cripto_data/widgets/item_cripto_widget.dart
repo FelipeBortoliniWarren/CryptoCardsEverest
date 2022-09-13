@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/base_cripto.dart';
+import '../../../model/cripto_model.dart';
 import 'value_amount_cripto_widget.dart';
 
 class ItemCripto extends StatelessWidget {
-  final BaseCripto criptoInfo;
+  final CriptoModel criptoInfo;
 
   const ItemCripto({
     Key? key,

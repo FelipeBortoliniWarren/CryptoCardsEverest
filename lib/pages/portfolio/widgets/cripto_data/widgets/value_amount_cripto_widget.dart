@@ -1,14 +1,15 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../../core/base_cripto.dart';
-import '../../../../../../core/providers.dart';
+import '../../../model/cripto_model.dart';
+import '../../../../../shared/utils/providers.dart';
 import '../../hide_monetary_widget.dart';
-import '../../../../../shared/scroll_text_widget.dart';
+import '../../scroll_text_widget.dart';
 
 class ValueAmountCripto extends HookConsumerWidget {
-  final BaseCripto criptoInfo;
+  final CriptoModel criptoInfo;
 
   const ValueAmountCripto({
     Key? key,
@@ -29,11 +30,10 @@ class ValueAmountCripto extends HookConsumerWidget {
                 width: 160,
                 align: Alignment.centerRight,
                 widget: Text(
-                  formatCurrency
-                      .format(criptoInfo.valueCripto * criptoInfo.amountCrypto),
-                  style: const TextStyle(
-                    fontSize: 19,
+                  formatCurrency.format(
+                    (criptoInfo.priceCripto * Decimal.parse(criptoInfo.amountCrypto.toString())).toDouble()
                   ),
+                  style: const TextStyle(fontSize: 19),
                 ),
               )
             : const HideMonetary(

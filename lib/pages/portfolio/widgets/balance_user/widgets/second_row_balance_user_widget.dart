@@ -3,10 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../../core/criptos_info.dart';
-import '../../../../../../core/providers.dart';
-import '../../../../../shared/scroll_text_widget.dart';
-import '../../../../../utils/calculate_total_wallet.dart';
+import '../../../controller/portfolio_controller.dart';
+import '../../../../../shared/utils/providers.dart';
+import '../../scroll_text_widget.dart';
 import '../../hide_monetary_widget.dart';
 
 class SecondRowBalanceUserWidget extends StatefulHookConsumerWidget {
@@ -23,7 +22,8 @@ class _SecondRowBalanceUserWidgetState
   Widget build(BuildContext context) {
     final formatCurrency = NumberFormat.simpleCurrency(locale: 'pt-BR');
     final visible = ref.watch(visibleProvider.state);
-    double totalBalance = calculateTotalWallet(criptos);
+    PortfolioController criptoContorller = PortfolioController();
+    double totalBalance = criptoContorller.calculateTotalWallet(criptoContorller.getCriptosList());
 
     return Container(
       alignment: Alignment.centerLeft,

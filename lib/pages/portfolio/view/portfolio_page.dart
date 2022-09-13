@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'widgets/balance_user/balance_user_widget.dart';
-import '../../../core/base_cripto.dart';
-import 'widgets/cripto_data/cripto_data_widget.dart';
-import '../../../core/providers.dart';
+import '../widgets/balance_user/balance_user_widget.dart';
+import '../model/cripto_model.dart';
+import '../widgets/cripto_data/cripto_data_widget.dart';
+import '../../../shared/utils/providers.dart';
 
-class WalletPage extends HookConsumerWidget {
-  const WalletPage({super.key});
+class PortfolioPage extends HookConsumerWidget {
+  const PortfolioPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,9 +20,9 @@ class WalletPage extends HookConsumerWidget {
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: assetCriptos.length,
+        itemCount: assetCriptos.getCriptosList().length,
         itemBuilder: ((context, index) {
-          BaseCripto cripto = assetCriptos[index];
+          CriptoModel cripto = assetCriptos.getCriptosList()[index];
           return CriptoData(criptoInfo: cripto);
         }),
       ),
