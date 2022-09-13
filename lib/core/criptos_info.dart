@@ -6,7 +6,7 @@ List<BaseCripto> criptos = [
     initialsCripto: 'BTC',
     valueCripto: 6557,
     iconCripto: 'assets/images/bitcoin.png',
-    amountCrypto: 0.65,
+    amountCrypto: 65000,
   ),
   BaseCripto(
     nameCripto: 'Ethereum',
