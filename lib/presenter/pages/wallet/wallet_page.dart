@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'widgets/balance_user.dart';
-import '../../core/base_cripto.dart';
-import 'widgets/currency_data.dart';
-import '../../core/providers.dart';
+import 'widgets/balance_user/balance_user_widget.dart';
+import '../../../core/base_cripto.dart';
+import 'widgets/cripto_data/cripto_data_widget.dart';
+import '../../../core/providers.dart';
 
 class WalletPage extends HookConsumerWidget {
   const WalletPage({super.key});
@@ -23,7 +23,7 @@ class WalletPage extends HookConsumerWidget {
         itemCount: assetCriptos.length,
         itemBuilder: ((context, index) {
           BaseCripto cripto = assetCriptos[index];
-          return CurrencyData(cripto: cripto);
+          return CriptoData(criptoInfo: cripto);
         }),
       ),
     );

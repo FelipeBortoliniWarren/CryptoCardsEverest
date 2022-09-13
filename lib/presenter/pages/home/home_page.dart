@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/presenter/wallet/wallet_page.dart';
+import 'package:flutter_application_2/presenter/pages/wallet/wallet_page.dart';
 
-import 'presenter/movement/movement_page.dart';
+import '../movement/movement_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -33,14 +33,11 @@ class _HomePageState extends State<HomePage> {
         currentIndex: indexSelected,
         items: const [
           BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assets/images/warren.png'),
-              ),
-              label: 'Portfólio'),
+            icon: ImageIcon(AssetImage('assets/images/warren.png')),
+            label: 'Portfólio',
+          ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage('assets/images/cent.png'),
-            ),
+            icon: ImageIcon(AssetImage('assets/images/cent.png')),
             label: 'Movimentações',
           ),
         ],
@@ -48,4 +45,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
