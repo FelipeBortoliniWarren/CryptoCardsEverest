@@ -1,6 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter_application_2/shared/utils/assets.dart';
-import 'package:flutter_application_2/pages/portfolio/model/cripto_model.dart';
+import 'package:flutter_application_2/portfolio/model/cripto_model.dart';
 
 class PortfolioRepository {
   List<CriptoModel> getCriptosListRepository() {
@@ -71,5 +71,9 @@ class PortfolioRepository {
       walletBalance += cripto.balanceUser;
     }
     return walletBalance;
+  }
+
+  Decimal calculateTotalCripto(Decimal priceCripto, double amountCripto) {
+    return (priceCripto * Decimal.parse(amountCripto.toString()));
   }
 }

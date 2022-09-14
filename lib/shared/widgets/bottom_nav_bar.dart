@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/portfolio/view/portfolio_page.dart';
+import 'package:flutter_application_2/portfolio/view/portfolio_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../pages/movements/view/movements_page.dart';
-import 'utils/assets.dart';
+import '../../movements/view/movements_page.dart';
+import '../utils/assets.dart';
 
-class ScaffoldPage extends StatefulWidget {
-  const ScaffoldPage({super.key});
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({super.key});
 
   @override
-  State<ScaffoldPage> createState() => _ScaffoldPageState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _ScaffoldPageState extends State<ScaffoldPage> {
+class _BottomNavBarState extends State<BottomNavBar> {
   int indexSelected = 0;
 
   void changeIndex(int value) {

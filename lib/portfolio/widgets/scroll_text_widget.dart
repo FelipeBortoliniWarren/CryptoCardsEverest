@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ScrollText extends HookConsumerWidget {
+class ScrollText extends StatelessWidget {
   final Widget widget;
-  final double? width;
+  final double width;
   final Alignment align;
 
   const ScrollText({
@@ -14,7 +13,7 @@ class ScrollText extends HookConsumerWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Container(
       alignment: align,
       width: width,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/portfolio/model/cripto_model.dart';
+import 'package:flutter_application_2/portfolio/model/cripto_model.dart';
 
-import 'widgets/item_cripto_widget.dart';
+import 'cripto_details.dart';
 
-class CriptoData extends StatelessWidget {
+class ListCriptos extends StatelessWidget {
   final CriptoModel criptoInfo;
 
-  const CriptoData({
+  const ListCriptos({
     Key? key,
     required this.criptoInfo,
   }) : super(key: key);
@@ -16,7 +16,7 @@ class CriptoData extends StatelessWidget {
     return Column(
       children: [
         const Divider(thickness: 1),
-        ItemCripto(criptoInfo: criptoInfo),
+        CriptoDetails(criptoInfo: criptoInfo),
       ],
     );
   }

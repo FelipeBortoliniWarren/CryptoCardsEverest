@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/shared/utils/styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MovementsPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class MovementsPage extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
-                color: Colors.pink,
+                color: pinkWarren,
                 letterSpacing: -1,
               ),
             ),
