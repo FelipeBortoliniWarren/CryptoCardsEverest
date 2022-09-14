@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 import '../../../controller/portfolio_controller.dart';
@@ -47,7 +48,7 @@ class _SecondRowBalanceUserWidgetState
                   height: 39,
                 ),
           Text(
-            'Valor total de moedas',
+            AppLocalizations.of(context)!.totalCoinValue,
             style: GoogleFonts.montserrat(
               fontSize: 17,
               fontWeight: FontWeight.w400,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/pages/portfolio/view/portfolio_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../pages/movements/view/movements_page.dart';
+import 'utils/assets.dart';
 
 class ScaffoldPage extends StatefulWidget {
   const ScaffoldPage({super.key});
@@ -42,14 +44,14 @@ class _ScaffoldPageState extends State<ScaffoldPage> {
           height: 1.8,
         ),
         currentIndex: indexSelected,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/warren.png')),
-            label: 'Portfólio',
+            icon: const ImageIcon(AssetImage(warrenIcon)),
+            label: AppLocalizations.of(context)!.bottomBarPortfolio,
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/images/cent.png')),
-            label: 'Movimentações',
+            icon: const ImageIcon(AssetImage(centIcon)),
+            label: AppLocalizations.of(context)!.bottomBarMovements,
           ),
         ],
       ),
