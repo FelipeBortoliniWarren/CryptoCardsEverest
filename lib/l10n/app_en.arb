@@ -2,5 +2,6 @@
     "titlePortfolio": "Crypto",
     "totalCoinValue" : "Total coin value",
     "bottomBarPortfolio": "Portfolio",
-    "bottomBarMovements": "Movements"
+    "bottomBarMovements": "Movements",
+    "titleMovements": "Movements"
 }

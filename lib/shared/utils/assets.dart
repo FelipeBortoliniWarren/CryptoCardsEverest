@@ -7,4 +7,6 @@ const String iconCardano = 'assets/images/cardano.png';
 const String iconPolkadot = 'assets/images/polkadot.png';
 const String iconDogecoin = 'assets/images/dogecoin.png';
 const String warrenIcon = 'assets/images/warren.png';
+const String warrenIconOff = 'assets/images/warrenOff.png';
 const String centIcon = 'assets/images/cent.png';
+const String centIconOff = 'assets/images/centOff.png';
