@@ -58,12 +58,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
         currentIndex: indexSelected,
         items: [
           BottomNavigationBarItem(
-            icon: const ImageIcon(AssetImage(warrenIconOff), color: colorTextGrey,),
+            icon: const ImageIcon(AssetImage(warrenIcon), color: colorTextGrey,),
             activeIcon: const ImageIcon(AssetImage(warrenIcon), color: pinkWarren,),
             label: AppLocalizations.of(context)!.bottomBarPortfolio,
           ),
           BottomNavigationBarItem(
-            icon: const ImageIcon(AssetImage(centIconOff), color: colorTextGrey,),
+            icon: const ImageIcon(AssetImage(centIcon), color: colorTextGrey,),
             activeIcon: const ImageIcon(AssetImage(centIcon), color: pinkWarren,),
             label: AppLocalizations.of(context)!.bottomBarMovements,
           ),
