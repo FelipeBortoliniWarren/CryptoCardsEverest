@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -29,12 +28,7 @@ class HeaderPortfolio extends HookConsumerWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.titlePortfolio,
-                style: GoogleFonts.montserrat(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  color: pinkWarren,
-                  letterSpacing: -1,
-                ),
+                style: titlePageStyle(),
               ),
               IconButton(
                 onPressed: () => changeVisibility(),
@@ -60,20 +54,12 @@ class HeaderPortfolio extends HookConsumerWidget {
                   fontSize: 32,
                   align: Alignment.centerLeft,
                   color: colorTextBlack,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 32,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: totalBalanceUserStyle(),
                 ),
               ),
               Text(
                 AppLocalizations.of(context)!.totalCoinValue,
-                style: GoogleFonts.montserrat(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400,
-                  color: colorTextGrey,
-                  letterSpacing: -1,
-                ),
+                style: textTotalCoinValueStyle(),
               ),
             ],
           ),

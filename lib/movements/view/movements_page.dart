@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/shared/utils/styles.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../shared/widgets/bottom_nav_bar.dart';
 
 class MovementsPage extends StatelessWidget {
   const MovementsPage({super.key});
+
+  static const route = '/movements';
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +17,13 @@ class MovementsPage extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Movimentações',
-              style: GoogleFonts.montserrat(
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
-                color: pinkWarren,
-                letterSpacing: -1,
-              ),
+              AppLocalizations.of(context)!.titleMovements,
+              style: titlePageStyle(),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(indexSelected: 1),
     );
   }
 }
