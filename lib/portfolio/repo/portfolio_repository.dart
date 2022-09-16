@@ -6,59 +6,68 @@ class PortfolioRepository {
   List<CriptoModel> getCriptosListRepository() {
     List<CriptoModel> criptosList = [
       CriptoModel(
-        nameCripto: 'Bitcoin',
-        initialsCripto: 'BTC',
-        priceCripto: Decimal.parse('6557'),
-        iconCripto: iconBitcoin,
-        amountCrypto: 65000,
+        name: 'Bitcoin',
+        initials: 'BTC',
+        price: Decimal.parse('6557'),
+        icon: iconBitcoin,
+        amount: 65000,
+        variation: 0.5,
       ),
       CriptoModel(
-        nameCripto: 'Ethereum',
-        initialsCripto: 'ETH',
-        priceCripto: Decimal.parse('7996'),
-        iconCripto: iconEthereum,
-        amountCrypto: 0.94,
+        name: 'Ethereum',
+        initials: 'ETH',
+        price: Decimal.parse('7996'),
+        icon: iconEthereum,
+        amount: 0.94,
+        variation: -0.5,
       ),
       CriptoModel(
-        nameCripto: 'Litecoin',
-        initialsCripto: 'LTC',
-        priceCripto: Decimal.parse('245'),
-        iconCripto: iconLitecoin,
-        amountCrypto: 0.82,
+        name: 'Litecoin',
+        initials: 'LTC',
+        price: Decimal.parse('245'),
+        icon: iconLitecoin,
+        amount: 0.82,
+        variation: 0.5,
       ),
       CriptoModel(
-        nameCripto: 'Tether',
-        initialsCripto: 'USDT',
-        priceCripto: Decimal.parse('290'),
-        iconCripto: iconTether,
-        amountCrypto: 0.3,
+        name: 'Tether',
+        initials: 'USDT',
+        price: Decimal.parse('290'),
+        icon: iconTether,
+        amount: 0.3,
+        variation: -0.5,
       ),
       CriptoModel(
-          nameCripto: 'BNB',
-          initialsCripto: 'BNB',
-          priceCripto: Decimal.parse('500.03'),
-          iconCripto: iconBnb,
-          amountCrypto: 0.25),
-      CriptoModel(
-        nameCripto: 'Cardano',
-        initialsCripto: 'ADA',
-        priceCripto: Decimal.parse('980.98'),
-        iconCripto: iconCardano,
-        amountCrypto: 1.6,
+        name: 'BNB',
+        initials: 'BNB',
+        price: Decimal.parse('500.03'),
+        icon: iconBnb,
+        amount: 0.25,
+        variation: -0.5,
       ),
       CriptoModel(
-        nameCripto: 'Polkadot',
-        initialsCripto: 'DOT',
-        priceCripto: Decimal.parse('33.4'),
-        iconCripto: iconPolkadot,
-        amountCrypto: 2.7,
+        name: 'Cardano',
+        initials: 'ADA',
+        price: Decimal.parse('980.98'),
+        icon: iconCardano,
+        amount: 1.6,
+        variation: -0.5,
       ),
       CriptoModel(
-        nameCripto: 'Dogecoin',
-        initialsCripto: 'DOGE',
-        priceCripto: Decimal.parse('93.5'),
-        iconCripto: iconDogecoin,
-        amountCrypto: 0.5,
+        name: 'Polkadot',
+        initials: 'DOT',
+        price: Decimal.parse('33.4'),
+        icon: iconPolkadot,
+        amount: 2.7,
+        variation: 0.5,
+      ),
+      CriptoModel(
+        name: 'Dogecoin',
+        initials: 'DOGE',
+        price: Decimal.parse('93.5'),
+        icon: iconDogecoin,
+        amount: 0.5,
+        variation: -0.5,
       ),
     ];
     return criptosList;
@@ -67,8 +76,9 @@ class PortfolioRepository {
   Decimal calculateTotalPortfolioRepository(List<CriptoModel> criptos) {
     Decimal walletBalance = Decimal.parse('0');
     for (CriptoModel cripto in criptos) {
-      cripto.balanceUser = Decimal.parse(cripto.amountCrypto.toString()) * cripto.priceCripto;
-      walletBalance += cripto.balanceUser;
+      cripto.value =
+          Decimal.parse(cripto.amount.toString()) * cripto.price;
+      walletBalance += cripto.value;
     }
     return walletBalance;
   }

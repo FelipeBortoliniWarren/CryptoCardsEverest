@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/utils/styles.dart';
+import '../../shared/widgets/circle_cripto_icon.dart';
 import '../model/cripto_model.dart';
 import 'cripto_monetary_details.dart';
 
-class CriptoDetails extends StatelessWidget {
+class CriptoInfos extends StatelessWidget {
   final CriptoModel criptoInfo;
 
-  const CriptoDetails({
+  const CriptoInfos({
     Key? key,
     required this.criptoInfo,
   }) : super(key: key);
@@ -15,19 +16,13 @@ class CriptoDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: backgroundIconsCripto,
-        radius: 24,
-        child: Image(
-          image: AssetImage(criptoInfo.iconCripto),
-        ),
-      ),
+      leading: circleIconCripto(criptoInfo.icon),
       title: Text(
-        criptoInfo.initialsCripto,
+        criptoInfo.initials,
         style: const TextStyle(fontSize: 19),
       ),
       subtitle: Text(
-        criptoInfo.nameCripto,
+        criptoInfo.name,
         style: const TextStyle(
           fontSize: 15,
           color: colorTextGrey,

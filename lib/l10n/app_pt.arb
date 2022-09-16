@@ -3,5 +3,11 @@
     "totalCoinValue" : "Valor total de moedas",
     "bottomBarPortfolio": "Portfólio",
     "bottomBarMovements": "Movimentações",
-    "titleMovements": "Movimentações"
+    "titleMovements": "Movimentações",
+    "titleCriptoDetails": "Detalhes",
+    "convertCurrency": "Converter moeda",
+    "currentPrice": "Preço atual",
+    "variation24": "Variação 24H",
+    "amount": "Quantidade",
+    "value": "Valor"
 }

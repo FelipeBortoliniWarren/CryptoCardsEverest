@@ -1,42 +1,47 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:decimal/decimal.dart';
 
 class CriptoModel {
-  String nameCripto;
-  String initialsCripto;
-  String iconCripto;
-  Decimal priceCripto;
-  double amountCrypto;
-  Decimal balanceUser = Decimal.parse('0');
+  String name;
+  String initials;
+  String icon;
+  Decimal price;
+  Decimal value = Decimal.parse('0');
+  double amount;
+  double variation;
   
   CriptoModel({
-    required this.nameCripto,
-    required this.initialsCripto,
-    required this.iconCripto,
-    required this.priceCripto,
-    required this.amountCrypto,
+    required this.name,
+    required this.initials,
+    required this.icon,
+    required this.price,
+    required this.amount,
+    required this.variation,
   });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'nameCripto': nameCripto});
-    result.addAll({'initialsCripto': initialsCripto});
-    result.addAll({'iconCripto': iconCripto});
-    result.addAll({'priceCripto': priceCripto});
-    result.addAll({'amountCrypto': amountCrypto});
+    result.addAll({'name': name});
+    result.addAll({'initials': initials});
+    result.addAll({'icon': icon});
+    result.addAll({'price': price});
+    result.addAll({'amount': amount});
+    result.addAll({'variation': variation});
 
     return result;
   }
 
   factory CriptoModel.fromMap(Map<String, dynamic> map) {
     return CriptoModel(
-      nameCripto: map['nameCripto'] ?? '',
-      initialsCripto: map['initialsCripto'] ?? '',
-      iconCripto: map['iconCripto'] ?? '',
-      priceCripto: map['priceCripto'] ?? '',
-      amountCrypto: map['amountCrypto'] ?? '',
+      name: map['nameCripto'] ?? '',
+      initials: map['initials'] ?? '',
+      icon: map['icon'] ?? '',
+      price: map['price'] ?? '',
+      amount: map['amount'] ?? '', 
+      variation: map['variation'] ?? '',
     );
   }
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/portfolio/model/cripto_model.dart';
 
-import 'cripto_details.dart';
+import '../../cripto_details/view/cripto_details_page.dart';
+import 'cripto_infos.dart';
 
 class ListCriptos extends StatelessWidget {
   final CriptoModel criptoInfo;
@@ -16,7 +17,21 @@ class ListCriptos extends StatelessWidget {
     return Column(
       children: [
         const Divider(thickness: 1),
-        CriptoDetails(criptoInfo: criptoInfo),
+        InkWell(
+          onTap: () => Navigator.pushNamed(
+            context,
+            '/details',
+            arguments: Arguments(
+              criptoInfo.name,
+              criptoInfo.initials,
+              criptoInfo.icon,
+              criptoInfo.price,
+              criptoInfo.amount,
+              criptoInfo.variation,
+            ),
+          ),
+          child: CriptoInfos(criptoInfo: criptoInfo),
+        ),
       ],
     );
   }

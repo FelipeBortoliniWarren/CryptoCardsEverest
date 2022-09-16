@@ -3,5 +3,11 @@
     "totalCoinValue" : "Total coin value",
     "bottomBarPortfolio": "Portfolio",
     "bottomBarMovements": "Movements",
-    "titleMovements": "Movements"
+    "titleMovements": "Movements",
+    "titleCriptoDetails": "Details",
+    "convertCurrency": "Convert currency",
+    "currentPrice": "Curren price",
+    "variation24": "Variation 24H",
+    "amount": "Amount",
+    "value": "Value"
 }

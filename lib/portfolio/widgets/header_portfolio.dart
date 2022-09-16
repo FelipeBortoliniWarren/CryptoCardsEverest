@@ -28,7 +28,7 @@ class HeaderPortfolio extends HookConsumerWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.titlePortfolio,
-                style: titlePageStyle(),
+                style: titleH1Montserrat32(pinkWarren),
               ),
               IconButton(
                 onPressed: () => changeVisibility(),
@@ -59,7 +59,7 @@ class HeaderPortfolio extends HookConsumerWidget {
               ),
               Text(
                 AppLocalizations.of(context)!.totalCoinValue,
-                style: textTotalCoinValueStyle(),
+                style: subtitleGreyStyle(),
               ),
             ],
           ),
