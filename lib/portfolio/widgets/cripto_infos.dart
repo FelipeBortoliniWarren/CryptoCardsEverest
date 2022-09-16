@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../cripto_details/model/arguments.dart';
 import '../../shared/utils/styles.dart';
 import '../../shared/widgets/circle_cripto_icon.dart';
 import '../model/cripto_model.dart';
@@ -16,6 +17,21 @@ class CriptoInfos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/details',
+          arguments: Arguments(
+            criptoInfo.name,
+            criptoInfo.initials,
+            criptoInfo.icon,
+            criptoInfo.price,
+            criptoInfo.amount,
+            criptoInfo.variation,
+            criptoInfo.value,
+          ),
+        );
+      },
       leading: circleIconCripto(criptoInfo.icon),
       title: Text(
         criptoInfo.initials,

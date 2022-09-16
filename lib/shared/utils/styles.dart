@@ -97,7 +97,7 @@ TextStyle valueVariationStyle(double variation) {
   );
 }
 
-TextStyle textFilterTimeChartStyle(bool isSelected) {
+TextStyle textHistoryFilterChartStyle(bool isSelected) {
   return GoogleFonts.sourceSansPro(
     color: isSelected ? colorTextBlack : colorTextGrey,
     fontSize: 14,

@@ -21,6 +21,7 @@ class CriptoMonetaryDetails extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         HideMonetary(
           smallWidth: 110,
@@ -31,7 +32,7 @@ class CriptoMonetaryDetails extends StatelessWidget {
           align: Alignment.centerRight,
           color: colorTextBlack,
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 3),
         HideMonetary(
           smallWidth: 70,
           bigWidth: 160,

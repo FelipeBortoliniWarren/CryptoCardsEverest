@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/portfolio/widgets/cripto_infos.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../provider/provider.dart';
 import '../widgets/header_portfolio.dart';
 import '../model/cripto_model.dart';
-import '../widgets/list_criptos.dart';
 import '../../shared/providers/providers.dart';
 
 class PortfolioPage extends StatefulHookConsumerWidget {
@@ -34,12 +34,13 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
           },
         ),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         physics: const BouncingScrollPhysics(),
         itemCount: assetCriptos.getCriptosList().length,
+        separatorBuilder: (context, index) => const Divider(thickness: 1),
         itemBuilder: ((context, index) {
           CriptoModel cripto = assetCriptos.getCriptosList()[index];
-          return ListCriptos(criptoInfo: cripto);
+          return CriptoInfos(criptoInfo: cripto);
         }),
       ),
       bottomNavigationBar: const BottomNavBar(indexSelected: 0),
