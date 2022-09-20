@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
@@ -41,13 +42,25 @@ class LineChartWidget extends HookConsumerWidget {
               getTooltipItems: (pointValues) {
                 return pointValues.map((point) {
                   return LineTooltipItem(
-                    formatCurrency.format(point.y),
+                    '${DateFormat("dd/MM/yyyy").format(
+                          DateTime.fromMillisecondsSinceEpoch(
+                            int.parse("${point.x.toInt()}000"),
+                          ),
+                        ).toString()} ${formatCurrency.format(point.y)}',
                     const TextStyle(
-                      fontWeight: FontWeight.bold,
                       color: white,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
                   );
+                  // return LineTooltipItem(
+                  //   formatCurrency.format(point.y),
+                  //   const TextStyle(
+                  //     fontWeight: FontWeight.bold,
+                  //     color: white,
+                  //
+                  //   ),
+                  // );
                 }).toList();
               },
             ),

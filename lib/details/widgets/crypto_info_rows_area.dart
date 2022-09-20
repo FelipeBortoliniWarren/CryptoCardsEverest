@@ -41,7 +41,7 @@ class CryptoInfoRowsArea extends StatelessWidget {
         CryptoInfoRow(
           textInfo: intervalDays == 5
               ? AppLocalizations.of(context)!.variation24
-              : '${AppLocalizations.of(context)!.variation} ${intervalDays}H',
+              : '${AppLocalizations.of(context)!.variation} ${intervalDays}D',
           valueInfo: variation > 0
               ? '+${variation.toStringAsFixed(2)}%'
               : '${variation.toStringAsFixed(2)}%',
