@@ -1,9 +1,9 @@
-import '../../shared/model/cripto_model.dart';
+import '../../shared/model/crypto_model.dart';
 
 class Arguments {
-  final CriptoModel cripto;
+  final CryptoModel crypto;
 
   Arguments(
-    this.cripto,
+    this.crypto,
   );
 }

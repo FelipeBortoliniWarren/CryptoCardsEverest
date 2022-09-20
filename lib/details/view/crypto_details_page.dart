@@ -1,35 +1,46 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/details/controllers/details_controller.dart';
+import 'package:flutter_application_2/shared/controller/crypto_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_application_2/details/widgets/crypto_info_row.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/styles.dart';
 import '../../shared/utils/format_currency.dart';
-import '../../shared/widgets/circle_cripto_icon.dart';
+import '../../shared/widgets/circle_crypto_icon.dart';
 import '../model/arguments.dart';
-// import '../providers/providers.dart';
-import '../widgets/app_bar_cripto_details.dart';
+import '../providers/providers.dart';
+import '../widgets/app_bar_crypto_details.dart';
 import '../widgets/line_chart_widget.dart';
 import '../widgets/history_filter_chart.dart';
 
-class CriptoDetailsPage extends StatelessWidget {
+class CryptoDetailsPage extends HookConsumerWidget {
   static const route = '/details';
 
-  const CriptoDetailsPage({
+  const CryptoDetailsPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     final Arguments args =
         ModalRoute.of(context)?.settings.arguments as Arguments;
-    // final historyInterval = ref.watch(historyIntervalProvider);
-    // historyInterval.setPricesHistory(args.cripto.historyPrice);
+
+    final historyInterval = ref.watch(historyIntervalProvider);
+    int intervalDays = historyInterval.getIntervalDays();
+
+    final detailsController = DetailsController();
+    double variation = detailsController.getVariationPeriodSelected(args.crypto.historyPrice, intervalDays);
+    double pricePeriod = detailsController.getPricePeriodSelected(args.crypto.historyPrice, intervalDays);
+
+    final cryptoController = CryptoController();
+    Decimal currentPrice = cryptoController.getCurrentPrice(args.crypto);
 
     return Scaffold(
-      appBar: AppBarCriptoDetails(width: MediaQuery.of(context).size.width),
+      appBar: AppBarCryptoDetails(width: MediaQuery.of(context).size.width),
       body: Container(
         color: white,
         padding: const EdgeInsets.only(top: 32),
@@ -46,19 +57,19 @@ class CriptoDetailsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          args.cripto.name,
+                          args.crypto.name,
                           style: titleH1BlackStyle(),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          args.cripto.initials,
+                          args.crypto.initials,
                           style: subtitleGreyStyle(),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        circleIconCripto(args.cripto.icon),
+                        CircleIconCrypto(icon: args.crypto.icon),
                         const SizedBox(
                           height: 22,
                         )
@@ -73,10 +84,10 @@ class CriptoDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      formatCurrency.format(args.cripto.price.toDouble()),
+                      formatCurrency.format(currentPrice.toDouble()),
                       style: titleH1Montserrat32(colorTextBlack),
                     ),
-                    LineChartWidget(historyPrice: args.cripto.historyPrice),
+                    LineChartWidget(historyPrice: args.crypto.historyPrice),
                     Container(
                       height: 22,
                       margin: const EdgeInsets.only(bottom: 15),
@@ -94,28 +105,32 @@ class CriptoDetailsPage extends StatelessWidget {
                 ),
               ),
               CryptoInfoRow(
-                infoTitle: AppLocalizations.of(context)!.currentPrice,
-                info: formatCurrency.format(args.cripto.price.toDouble()),
+                infoTitle: intervalDays == 5
+                    ? AppLocalizations.of(context)!.currentPrice
+                    : '${AppLocalizations.of(context)!.price} ${intervalDays}D',
+                info: formatCurrency.format(pricePeriod),
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),
               CryptoInfoRow(
-                infoTitle: AppLocalizations.of(context)!.variation24,
-                info: args.cripto.variation > 0
-                    ? '+${args.cripto.variation}%'
-                    : '${args.cripto.variation}%',
+                infoTitle: intervalDays == 5
+                    ? AppLocalizations.of(context)!.variation24 :
+                    '${AppLocalizations.of(context)!.variation} ${intervalDays}H',
+                info: variation > 0
+                    ? '+${variation.toStringAsFixed(2)}%'
+                    : '${variation.toStringAsFixed(2)}%',
                 styleText: textInfoRowsDetailsStyle(),
-                styleValue: valueVariationStyle(args.cripto.variation),
+                styleValue: valueVariationStyle(variation),
               ),
               CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.amount,
-                info: '${args.cripto.amount} ${args.cripto.initials}',
+                info: '${args.crypto.amount} ${args.crypto.initials}',
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),
               CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.value,
-                info: formatCurrency.format(args.cripto.value.toDouble()),
+                info: formatCurrency.format(detailsController.getValueUser(args.crypto.amount, currentPrice).toDouble()),
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),

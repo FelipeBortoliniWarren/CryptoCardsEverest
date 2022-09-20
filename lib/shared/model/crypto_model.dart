@@ -1,6 +1,6 @@
 import 'package:decimal/decimal.dart';
 
-class CriptoModel {
+class CryptoModel {
   String name;
   String initials;
   String icon;
@@ -10,7 +10,7 @@ class CriptoModel {
   double variation;
   List<List> historyPrice;
   
-  CriptoModel({
+  CryptoModel({
     required this.name,
     required this.initials,
     required this.icon,

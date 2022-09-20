@@ -10,7 +10,7 @@ void main() {
   runApp(
     ProviderScope(
       child: MaterialApp(
-        title: 'Cripto Wallet',
+        title: 'Crypto Wallet',
         debugShowCheckedModeBanner: false,
         initialRoute: PortfolioPage.route,
         routes: appRoutes,

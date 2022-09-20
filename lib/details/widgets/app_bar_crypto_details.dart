@@ -3,11 +3,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/utils/styles.dart';
 
-class AppBarCriptoDetails extends StatelessWidget
+class AppBarCryptoDetails extends StatelessWidget
     implements PreferredSizeWidget {
   final double width;
 
-  const AppBarCriptoDetails({
+  const AppBarCryptoDetails({
     super.key,
     required this.width,
   });
@@ -25,10 +25,10 @@ class AppBarCriptoDetails extends StatelessWidget
         },
         splashRadius: 20,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: white,
       elevation: 1,
       title: Text(
-        AppLocalizations.of(context)!.titleCriptoDetails,
+        AppLocalizations.of(context)!.titleCryptoDetails,
         style: titleAppBarStyle(),
       ),
     );

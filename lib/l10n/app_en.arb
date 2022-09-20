@@ -4,10 +4,12 @@
     "bottomBarPortfolio": "Portfolio",
     "bottomBarMovements": "Movements",
     "titleMovements": "Movements",
-    "titleCriptoDetails": "Details",
+    "titleCryptoDetails": "Details",
     "convertCurrency": "Convert currency",
     "currentPrice": "Current price",
+    "price": "Price",
     "variation24": "Variation 24H",
+    "variation": "Variation",
     "amount": "Amount",
     "value": "Value"
 }

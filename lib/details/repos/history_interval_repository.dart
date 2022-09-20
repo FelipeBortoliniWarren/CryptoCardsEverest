@@ -1,7 +1,7 @@
+import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter_application_2/shared/repo/crypto_repository.dart';
 
-class DetailsRepository extends CryptoRepository {
+class HistoryIntervalRepository {
 
   List<FlSpot> pricesListToListFlSpot(List<List> history, int days){
     List<FlSpot> points = [];

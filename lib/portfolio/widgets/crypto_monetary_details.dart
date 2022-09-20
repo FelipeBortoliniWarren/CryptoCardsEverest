@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import '../../shared/utils/format_currency.dart';
 import '../../shared/utils/styles.dart';
 import '../controller/portfolio_controller.dart';
-import '../../shared/model/cripto_model.dart';
+import '../../shared/model/crypto_model.dart';
 import 'hide_monetary.dart';
 
-class CriptoMonetaryDetails extends StatelessWidget {
-  final CriptoModel criptoInfo;
+class CryptoMonetaryDetails extends StatelessWidget {
+  final CryptoModel cryptoInfo;
 
-  const CriptoMonetaryDetails({
+  const CryptoMonetaryDetails({
     Key? key,
-    required this.criptoInfo,
+    required this.cryptoInfo,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    PortfolioController criptoContorller = PortfolioController();
-    double totalCripto = criptoContorller.calculateTotalCripto(
-        criptoInfo.price, criptoInfo.amount).toDouble();
+    PortfolioController cryptoContorller = PortfolioController();
+    double totalCrypto = cryptoContorller.calculateValueCrypto(
+        cryptoInfo.price, cryptoInfo.amount).toDouble();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -27,7 +27,7 @@ class CriptoMonetaryDetails extends StatelessWidget {
           smallWidth: 110,
           bigWidth: 160,
           height: 18,
-          text: formatCurrency.format(totalCripto),
+          text: formatCurrency.format(totalCrypto),
           fontSize: 19,
           align: Alignment.centerRight,
           color: colorTextBlack,
@@ -37,7 +37,7 @@ class CriptoMonetaryDetails extends StatelessWidget {
           smallWidth: 70,
           bigWidth: 160,
           height: 18,
-          text: '${criptoInfo.amount} ${criptoInfo.initials}',
+          text: '${cryptoInfo.amount} ${cryptoInfo.initials}',
           fontSize: 15,
           align: Alignment.centerRight,
           color: colorTextGrey,

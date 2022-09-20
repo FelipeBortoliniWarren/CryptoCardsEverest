@@ -1,19 +1,19 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter_application_2/shared/repo/crypto_repository.dart';
-import 'package:flutter_application_2/shared/model/cripto_model.dart';
+import 'package:flutter_application_2/shared/model/crypto_model.dart';
 
 class PortfolioRepository extends CryptoRepository {
 
-  Decimal calculateTotalCryptoRepository(List<CriptoModel> criptos) {
+  Decimal calculateBalancePortfolioRepository(List<CryptoModel> cryptos) {
     Decimal walletBalance = Decimal.parse('0');
-    for (CriptoModel cripto in criptos) {
-      cripto.value = Decimal.parse(cripto.amount.toString()) * cripto.price;
-      walletBalance += cripto.value;
+    for (CryptoModel crypto in cryptos) {
+      crypto.value = Decimal.parse(crypto.amount.toString()) * crypto.price;
+      walletBalance += crypto.value;
     }
     return walletBalance;
   }
 
-  Decimal calculateTotalCripto(Decimal priceCripto, double amountCripto) {
-    return (priceCripto * Decimal.parse(amountCripto.toString()));
+  Decimal calculateValueCryptoRepository(Decimal priceCrypto, double amountCrypto) {
+    return (priceCrypto * Decimal.parse(amountCrypto.toString()));
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:flutter_application_2/shared/model/crypto_model.dart';
+
 import '../../shared/utils/format_currency.dart';
 import '../../shared/utils/styles.dart';
 import '../controller/portfolio_controller.dart';
@@ -10,14 +12,19 @@ import 'hide_monetary.dart';
 
 class HeaderPortfolio extends HookConsumerWidget {
   final VoidCallback changeVisibility;
-  const HeaderPortfolio({super.key, required this.changeVisibility});
+  final List<CryptoModel> cryptoInfos;
+
+  const HeaderPortfolio({
+    super.key,
+    required this.changeVisibility,
+    required this.cryptoInfos,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final visible = ref.watch(visibleProvider.state);
-    PortfolioController criptoContorller = PortfolioController();
-    double totalBalance = criptoContorller
-        .calculateTotalWallet(criptoContorller.getCriptosList());
+    PortfolioController portfolioController = PortfolioController();
+    double totalBalance = portfolioController.calculateBalancePortfolio(cryptoInfos);
 
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
