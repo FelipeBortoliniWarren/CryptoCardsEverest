@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
 import '../../shared/models/crypto_model.dart';
-import 'hide_monetary.dart';
+import '../../shared/widgets/hide_monetary.dart';
 
 class CryptoMonetaryDetails extends StatelessWidget {
   final CryptoModel cryptoInfo;
@@ -19,8 +19,8 @@ class CryptoMonetaryDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         HideMonetary(
-          smallWidth: 110,
-          bigWidth: 160,
+          hiderWidth: 110,
+          textWidth: 160,
           height: 18,
           text: formatCurrency.format(cryptoInfo.value.toDouble()),
           fontSize: 19,
@@ -29,8 +29,8 @@ class CryptoMonetaryDetails extends StatelessWidget {
         ),
         const SizedBox(height: 3),
         HideMonetary(
-          smallWidth: 70,
-          bigWidth: 160,
+          hiderWidth: 70,
+          textWidth: 160,
           height: 18,
           text: '${cryptoInfo.amount} ${cryptoInfo.initials}',
           fontSize: 15,

@@ -32,12 +32,14 @@ class CryptoInfoRowsArea extends StatelessWidget {
     return Column(
       children: [
         CryptoInfoRow(
-            textInfo: intervalDays == 5
-                ? AppLocalizations.of(context)!.currentPrice
-                : '${AppLocalizations.of(context)!.price} ${intervalDays}D',
-            valueInfo: formatCurrency.format(pricePeriod),
-            styleText: textInfoRowsDetailsStyle(),
-            styleValue: valuesInfoRowsDetailsStyle()),
+          textInfo: intervalDays == 5
+              ? AppLocalizations.of(context)!.currentPrice
+              : '${AppLocalizations.of(context)!.price} ${intervalDays}D',
+          valueInfo: formatCurrency.format(pricePeriod),
+          styleText: textInfoRowsDetailsStyle(),
+          styleValue: valuesInfoRowsDetailsStyle(),
+          monetaryData: false,
+        ),
         CryptoInfoRow(
           textInfo: intervalDays == 5
               ? AppLocalizations.of(context)!.variation24
@@ -47,12 +49,14 @@ class CryptoInfoRowsArea extends StatelessWidget {
               : '${variation.toStringAsFixed(2)}%',
           styleText: textInfoRowsDetailsStyle(),
           styleValue: valueVariationStyle(variation),
+          monetaryData: false,
         ),
         CryptoInfoRow(
           textInfo: AppLocalizations.of(context)!.amount,
           valueInfo: '$cryptoAmount $cryptoInitials',
           styleText: textInfoRowsDetailsStyle(),
           styleValue: valuesInfoRowsDetailsStyle(),
+          monetaryData: true,
         ),
         CryptoInfoRow(
           textInfo: AppLocalizations.of(context)!.value,
@@ -61,6 +65,7 @@ class CryptoInfoRowsArea extends StatelessWidget {
               .toDouble()),
           styleText: textInfoRowsDetailsStyle(),
           styleValue: valuesInfoRowsDetailsStyle(),
+          monetaryData: true,
         ),
       ],
     );

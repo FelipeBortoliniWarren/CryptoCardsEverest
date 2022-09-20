@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../shared/providers/providers.dart';
 import '../widgets/crypto_infos.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../controller/portfolio_controller.dart';
-import '../provider/provider.dart';
 import '../widgets/header_portfolio.dart';
 import '../../shared/models/crypto_model.dart';
 

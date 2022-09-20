@@ -4,12 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/crypto_model.dart';
 
+import '../../shared/providers/providers.dart';
 import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
 import '../../shared/utils/styles.dart';
 import '../controller/portfolio_controller.dart';
-import '../provider/provider.dart';
-import 'hide_monetary.dart';
+import '../../shared/widgets/hide_monetary.dart';
 
 class HeaderPortfolio extends HookConsumerWidget {
   final VoidCallback changeVisibility;
@@ -55,8 +55,8 @@ class HeaderPortfolio extends HookConsumerWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: HideMonetary(
-                  smallWidth: 200,
-                  bigWidth: 310,
+                  hiderWidth: 200,
+                  textWidth: 310,
                   height: 39,
                   text: formatCurrency.format(totalBalance),
                   fontSize: 32,

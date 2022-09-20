@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/utils/app_colors.dart';
-import '../provider/provider.dart';
-import 'scroll_text_widget.dart';
+import '../providers/providers.dart';
+import '../utils/app_colors.dart';
+import '../../portfolio/widgets/scroll_text_widget.dart';
 
 class HideMonetary extends HookConsumerWidget {
-  final double smallWidth;
-  final double bigWidth;
+  final double hiderWidth;
+  final double textWidth;
   final double height;
   final String text;
-  final double fontSize;
+  final double? fontSize;
   final Alignment align;
-  final Color color;
+  final Color? color;
   final TextStyle? style;
 
   const HideMonetary({
     Key? key,
-    required this.smallWidth,
-    required this.bigWidth,
+    required this.hiderWidth,
+    required this.textWidth,
     required this.height,
     required this.text,
-    required this.fontSize,
+    this.fontSize,
     required this.align,
-    required this.color,
+    this.color,
     this.style,
   }) : super(key: key);
 
@@ -32,11 +32,12 @@ class HideMonetary extends HookConsumerWidget {
     final visible = ref.watch(visibleProvider.state);
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Visibility(
           visible: visible.state,
           child: ScrollText(
-            width: bigWidth,
+            width: textWidth,
             align: align,
             widget: Text(
               text,
@@ -50,7 +51,7 @@ class HideMonetary extends HookConsumerWidget {
         Visibility(
           visible: !(visible.state),
           child: Container(
-            width: smallWidth,
+            width: hiderWidth,
             height: height,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),

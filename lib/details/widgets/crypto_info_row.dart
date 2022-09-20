@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_application_2/shared/widgets/hide_monetary.dart';
+
 class CryptoInfoRow extends StatelessWidget {
   final String textInfo;
   final String valueInfo;
   final TextStyle? styleText;
   final TextStyle? styleValue;
+  final bool monetaryData;
 
   const CryptoInfoRow({
     Key? key,
@@ -12,6 +15,7 @@ class CryptoInfoRow extends StatelessWidget {
     required this.valueInfo,
     required this.styleText,
     required this.styleValue,
+    required this.monetaryData,
   }) : super(key: key);
 
   @override
@@ -31,10 +35,19 @@ class CryptoInfoRow extends StatelessWidget {
                   textInfo,
                   style: styleText,
                 ),
-                Text(
-                  valueInfo,
-                  style: styleValue,
-                ),
+                monetaryData
+                    ? HideMonetary(
+                        hiderWidth: 150,
+                        textWidth: 150,
+                        height: 30,
+                        text: valueInfo,
+                        align: Alignment.centerRight,
+                        style: styleValue,
+                      )
+                    : Text(
+                        valueInfo,
+                        style: styleValue,
+                      ),
               ],
             ),
           ),
