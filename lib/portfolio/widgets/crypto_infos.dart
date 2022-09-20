@@ -19,7 +19,7 @@ class CryptoInfos extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final historyInterval = ref.watch(historyIntervalProvider);
+    final historyInterval = ref.read(historyIntervalProvider);
 
     return ListTile(
       onTap: () {

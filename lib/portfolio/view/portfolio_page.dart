@@ -27,6 +27,7 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
 
     for(CryptoModel crypto in cryptosList){
       crypto.price = assetCryptos.getCurrentPrice(crypto);
+      crypto.value = assetCryptos.calculateCryptoValue(crypto.price, crypto.amount);
     }
 
     return Scaffold(

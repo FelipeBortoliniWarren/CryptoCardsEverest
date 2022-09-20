@@ -5,15 +5,15 @@ import '../repos/history_interval_repository.dart';
 class HistoryIntervalUseCase {
   final HistoryIntervalRepository historyIntervalRepository = HistoryIntervalRepository();
 
-  List<FlSpot> pricesListToListFlSpot(List<List> history, int days){
-    return historyIntervalRepository.pricesListToListFlSpot(history, days);
+  List<FlSpot> pricesListToListFlSpotUsecase(List<List> history, int days){
+    return historyIntervalRepository.pricesListToListFlSpotRepository(history, days);
   }
 
-  double getMinYChart(List<List> history, int days){
-    return historyIntervalRepository.getMinYChart(history, days);
+  double getMinXChartUsecase(List<List> history, int days){
+    return historyIntervalRepository.getMinXChartRepository(history, days);
   }
 
-  double getMinXChart(List<List> history, int days){
-    return historyIntervalRepository.getMinXChart(history, days);
+  double getMinYChartUsecase(List<List> history, int days){
+    return historyIntervalRepository.getMinYChartRepository(history, days);
   }
 }

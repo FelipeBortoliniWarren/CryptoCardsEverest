@@ -26,7 +26,7 @@ class ChartArea extends StatelessWidget {
         children: [
           Text(
             formatCurrency.format(currentPrice.toDouble()),
-            style: titleH1Montserrat32(colorTextBlack),
+            style: titleH1Montserrat32Style(colorTextBlack),
           ),
           LineChartWidget(historyPrice: cryptoHistoryPrice),
           Container(

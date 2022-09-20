@@ -11,7 +11,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconBitcoin,
         amount: 3.5,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("102027.62726400001"), 1663545600.0],
           [Decimal.parse("105662.91421679"), 1663459200],
@@ -114,7 +113,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconEthereum,
         amount: 0.94,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("7118.824920999999"), 1663632000],
           [Decimal.parse("7013.100224000001"), 1663545600],
@@ -218,7 +216,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconLitecoin,
         amount: 0.82,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("273.58410299999997"), 1663632000],
           [Decimal.parse("276.696704"), 1663545600],
@@ -322,7 +319,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconTether,
         amount: 54.4,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("5.173579359"), 1663632000],
           [Decimal.parse("5.2539796480000005"), 1663545600],
@@ -426,7 +422,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconBnb,
         amount: 0.25,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("1408.6703594643068"), 1663632000],
           [Decimal.parse("1397.38080600653"), 1663545600],
@@ -530,7 +525,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconCardano,
         amount: 160.8,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("2.34064675"), 1663632000],
           [Decimal.parse("2.3523948800000003"), 1663545600],
@@ -634,7 +628,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconPolkadot,
         amount: 2.7,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("33.0121714"), 1663632000],
           [Decimal.parse("33.8540992"), 1663545600],
@@ -738,7 +731,6 @@ class CryptoRepository {
         price: Decimal.parse('0'),
         icon: iconDogecoin,
         amount: 75.9,
-        variation: 0,
         historyPrice: [
           [Decimal.parse("0.302861585"), 1663632000],
           [Decimal.parse("0.30186528"), 1663545600],

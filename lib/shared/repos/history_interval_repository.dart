@@ -1,9 +1,8 @@
-import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class HistoryIntervalRepository {
 
-  List<FlSpot> pricesListToListFlSpot(List<List> history, int days){
+  List<FlSpot> pricesListToListFlSpotRepository(List<List> history, int days){
     List<FlSpot> points = [];
     var index = 0;
     for (var element in history) {
@@ -14,7 +13,18 @@ class HistoryIntervalRepository {
     return points;
   }
 
-  double getMinYChart(List<List> history, int days){
+  double getMinXChartRepository(List<List> history, int days){
+    var index = 0;
+    double minX = history[0][1].toDouble();
+    for (var element in history) {
+      if(element[1].toDouble() < minX) minX = element[1].toDouble();
+      if(index >= days-1) break;
+      index++;
+    }
+    return minX;
+  }
+
+  double getMinYChartRepository(List<List> history, int days){
     var index = 0;
     double minY = history[0][0].toDouble();
     for (var element in history) {
@@ -24,16 +34,5 @@ class HistoryIntervalRepository {
     }
     minY -= minY * 0.01;
     return minY;
-  }
-
-  double getMinXChart(List<List> history, int days){
-    var index = 0;
-    double minX = history[0][1].toDouble();
-    for (var element in history) {
-      if(element[1].toDouble() < minX) minX = element[1].toDouble();
-      if(index >= days-1) break;
-      index++;
-    }
-    return minX;
   }
 }

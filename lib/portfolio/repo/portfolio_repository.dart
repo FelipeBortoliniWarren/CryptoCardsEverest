@@ -13,7 +13,7 @@ class PortfolioRepository extends CryptoRepository {
     return walletBalance;
   }
 
-  Decimal calculateValueCryptoRepository(Decimal priceCrypto, double amountCrypto) {
+  Decimal calculateCryptoValueRepository(Decimal priceCrypto, double amountCrypto) {
     return (priceCrypto * Decimal.parse(amountCrypto.toString()));
   }
 }

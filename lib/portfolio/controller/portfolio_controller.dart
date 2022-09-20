@@ -18,7 +18,7 @@ class PortfolioController {
     return double.parse(portfolioUsecase.calculateBalancePortfolioUsecase(cryptos).toString());
   }
 
-  Decimal calculateValueCrypto(Decimal priceCrypto, double amountCrypto) {
-    return portfolioUsecase.calculateValueCryptoUsecase(priceCrypto, amountCrypto);
+  Decimal calculateCryptoValue(Decimal priceCrypto, double amountCrypto) {
+    return portfolioUsecase.calculateCryptoValueUsecase(priceCrypto, amountCrypto);
   }
 }

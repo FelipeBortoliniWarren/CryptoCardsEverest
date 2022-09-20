@@ -10,7 +10,7 @@ TextStyle bottomNavLabelsStyle() {
   );
 }
 
-TextStyle titleH1Montserrat32(Color? color) {
+TextStyle titleH1Montserrat32Style(Color? color) {
   return GoogleFonts.montserrat(
     fontSize: 32,
     fontWeight: FontWeight.w700,

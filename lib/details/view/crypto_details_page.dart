@@ -32,8 +32,7 @@ class CryptoDetailsPage extends HookConsumerWidget {
     final String cryptoIcon = crypto.icon;
     final double cryptoAmount = crypto.amount;
 
-    final historyInterval = ref.watch(historyIntervalProvider);
-    int intervalDays = historyInterval.getIntervalDays();
+    int intervalDays = ref.watch(historyIntervalProvider).getIntervalDays();
 
     final detailsController = DetailsController();
     double variation = detailsController.getVariationPeriodSelected(

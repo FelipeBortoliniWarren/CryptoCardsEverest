@@ -7,7 +7,6 @@ class CryptoModel {
   Decimal price;
   Decimal value = Decimal.parse('0');
   double amount;
-  double variation;
   List<List> historyPrice;
   
   CryptoModel({
@@ -16,7 +15,6 @@ class CryptoModel {
     required this.icon,
     required this.price,
     required this.amount,
-    required this.variation,
     required this.historyPrice,
   });
 }

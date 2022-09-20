@@ -1,5 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../details/controller/details_controller.dart';
 
 import '../usecases/history_interval_usecase.dart';
@@ -12,6 +12,10 @@ class HistoryIntervalController extends ChangeNotifier {
   int intervalDays = 5;
   List<List> listPricesChart = [];
 
+  List<FlSpot> pricesListToListFlSpot() {
+    return historyIntervalUseCase.pricesListToListFlSpotUsecase(listPricesChart, intervalDays);
+  }
+
   void setPricesHistory(List<List> listPrices){
     listPricesChart = listPrices;
     notifyListeners();
@@ -23,20 +27,16 @@ class HistoryIntervalController extends ChangeNotifier {
   }
 
   void setMinXChart() {
-    minX = historyIntervalUseCase.getMinXChart(listPricesChart, intervalDays);
+    minX = historyIntervalUseCase.getMinXChartUsecase(listPricesChart, intervalDays);
     notifyListeners();
   }
 
   void setMinYChart() {
-    minY = historyIntervalUseCase.getMinYChart(listPricesChart, intervalDays);
+    minY = historyIntervalUseCase.getMinYChartUsecase(listPricesChart, intervalDays);
     notifyListeners();
   }
 
   int getIntervalDays(){
     return intervalDays;
-  }
-
-  List<FlSpot> pricesListToListFlSpot() {
-    return historyIntervalUseCase.pricesListToListFlSpot(listPricesChart, intervalDays);
   }
 }

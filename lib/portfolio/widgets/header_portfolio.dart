@@ -36,7 +36,7 @@ class HeaderPortfolio extends HookConsumerWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.titlePortfolio,
-                style: titleH1Montserrat32(pinkWarren),
+                style: titleH1Montserrat32Style(pinkWarren),
               ),
               IconButton(
                 onPressed: () => changeVisibility(),

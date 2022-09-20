@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
-import '../controller/portfolio_controller.dart';
 import '../../shared/models/crypto_model.dart';
 import 'hide_monetary.dart';
 
@@ -15,10 +14,6 @@ class CryptoMonetaryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PortfolioController cryptoContorller = PortfolioController();
-    double totalCrypto = cryptoContorller.calculateValueCrypto(
-        cryptoInfo.price, cryptoInfo.amount).toDouble();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +22,7 @@ class CryptoMonetaryDetails extends StatelessWidget {
           smallWidth: 110,
           bigWidth: 160,
           height: 18,
-          text: formatCurrency.format(totalCrypto),
+          text: formatCurrency.format(cryptoInfo.value.toDouble()),
           fontSize: 19,
           align: Alignment.centerRight,
           color: colorTextBlack,

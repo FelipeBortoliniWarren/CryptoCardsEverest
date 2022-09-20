@@ -15,7 +15,7 @@ class PortfolioUseCase extends CryptoUsecase {
     return portofolioRepository.calculateBalancePortfolioRepository(cryptos);
   }
 
-  Decimal calculateValueCryptoUsecase(Decimal priceCrypto, double amountCrypto){
-    return portofolioRepository.calculateValueCryptoRepository(priceCrypto, amountCrypto);
+  Decimal calculateCryptoValueUsecase(Decimal priceCrypto, double amountCrypto){
+    return portofolioRepository.calculateCryptoValueRepository(priceCrypto, amountCrypto);
   }
 }

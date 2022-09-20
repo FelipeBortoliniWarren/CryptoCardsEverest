@@ -19,7 +19,7 @@ class MovementsPage extends StatelessWidget {
           children: [
             Text(
               AppLocalizations.of(context)!.titleMovements,
-              style: titleH1Montserrat32(colorTextBlack),
+              style: titleH1Montserrat32Style(colorTextBlack),
             ),
           ],
         ),
