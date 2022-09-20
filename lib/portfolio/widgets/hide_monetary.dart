@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/utils/styles.dart';
+import '../../shared/utils/app_colors.dart';
 import '../provider/provider.dart';
 import 'scroll_text_widget.dart';
 

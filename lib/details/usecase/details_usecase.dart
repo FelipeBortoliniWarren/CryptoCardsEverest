@@ -1,9 +1,9 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter_application_2/shared/usecase/crypto_usecase.dart';
+import '../../shared/usecases/crypto_usecase.dart';
 
-import '../repos/details_repository.dart';
+import '../repo/details_repository.dart';
 
-class DetailsUseCase extends CryptoUsecase{
+class DetailsUsecase extends CryptoUsecase {
   final DetailsRepository detatilsRepository = DetailsRepository();
 
   double getPricePeriodSelected(List<List> history, int days){

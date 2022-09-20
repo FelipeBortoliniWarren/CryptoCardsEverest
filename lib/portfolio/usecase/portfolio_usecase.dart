@@ -1,20 +1,21 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter_application_2/shared/model/crypto_model.dart';
+import '../../shared/models/crypto_model.dart';
+import '../../shared/usecases/crypto_usecase.dart';
 
 import '../repo/portfolio_repository.dart';
 
-class PortfolioUseCase {
-  final PortfolioRepository repository = PortfolioRepository();
+class PortfolioUseCase extends CryptoUsecase {
+  final PortfolioRepository portofolioRepository = PortfolioRepository();
 
   List<CryptoModel> getCryptosListUseCase() {
-    return repository.getCryptosListRepository();
+    return portofolioRepository.getCryptosListRepository();
   }
 
   Decimal calculateBalancePortfolioUsecase(List<CryptoModel> cryptos) {
-    return repository.calculateBalancePortfolioRepository(cryptos);
+    return portofolioRepository.calculateBalancePortfolioRepository(cryptos);
   }
 
   Decimal calculateValueCryptoUsecase(Decimal priceCrypto, double amountCrypto){
-    return repository.calculateValueCryptoRepository(priceCrypto, amountCrypto);
+    return portofolioRepository.calculateValueCryptoRepository(priceCrypto, amountCrypto);
   }
 }

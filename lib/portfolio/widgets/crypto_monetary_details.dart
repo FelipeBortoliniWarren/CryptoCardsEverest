@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
-import '../../shared/utils/styles.dart';
 import '../controller/portfolio_controller.dart';
-import '../../shared/model/crypto_model.dart';
+import '../../shared/models/crypto_model.dart';
 import 'hide_monetary.dart';
 
 class CryptoMonetaryDetails extends StatelessWidget {

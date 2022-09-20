@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../details/view/crypto_details_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../details/model/arguments.dart';
-import '../../details/providers/providers.dart';
-import '../../shared/utils/styles.dart';
+import '../../shared/models/arguments_model.dart';
+import '../../shared/providers/providers.dart';
+import '../../shared/utils/app_colors.dart';
 import '../../shared/widgets/circle_crypto_icon.dart';
-import '../../shared/model/crypto_model.dart';
+import '../../shared/models/crypto_model.dart';
 import 'crypto_monetary_details.dart';
 
 class CryptoInfos extends HookConsumerWidget {
@@ -23,13 +24,13 @@ class CryptoInfos extends HookConsumerWidget {
     return ListTile(
       onTap: () {
         historyInterval.setPricesHistory(cryptoInfo.historyPrice);
-        historyInterval.changeDaysHistoryInterval(5);
+        historyInterval.changeIntervalDays(5);
         historyInterval.setMinXChart();
         historyInterval.setMinYChart();
         Navigator.pushNamed(
           context,
-          '/details',
-          arguments: Arguments(cryptoInfo),
+          CryptoDetailsPage.route,
+          arguments: ArgumentsModel(cryptoInfo),
         );
       },
       leading: CircleIconCrypto(icon: cryptoInfo.icon),

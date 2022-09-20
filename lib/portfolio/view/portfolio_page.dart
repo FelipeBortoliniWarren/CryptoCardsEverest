@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/portfolio/widgets/crypto_infos.dart';
+import '../widgets/crypto_infos.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../controller/portfolio_controller.dart';
 import '../provider/provider.dart';
 import '../widgets/header_portfolio.dart';
-import '../../shared/model/crypto_model.dart';
+import '../../shared/models/crypto_model.dart';
 
 class PortfolioPage extends StatefulHookConsumerWidget {
   const PortfolioPage({Key? key}) : super(key: key);

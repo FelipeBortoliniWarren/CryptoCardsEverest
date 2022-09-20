@@ -1,11 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_application_2/shared/utils/styles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
-import '../providers/providers.dart';
+import '../../shared/providers/providers.dart';
 
 class LineChartWidget extends HookConsumerWidget {
   final List<List> historyPrice;

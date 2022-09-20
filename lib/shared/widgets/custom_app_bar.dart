@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../shared/utils/styles.dart';
+import '../utils/app_colors.dart';
+import '../utils/styles.dart';
 
-class AppBarCryptoDetails extends StatelessWidget
-    implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double width;
+  final String title;
 
-  const AppBarCryptoDetails({
+  const CustomAppBar({
     super.key,
     required this.width,
+    required this.title,
   });
 
   @override
@@ -28,7 +29,8 @@ class AppBarCryptoDetails extends StatelessWidget
       backgroundColor: white,
       elevation: 1,
       title: Text(
-        AppLocalizations.of(context)!.titleCryptoDetails,
+        title
+        ,
         style: titleAppBarStyle(),
       ),
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/styles.dart';
-import '../providers/providers.dart';
+import '../../shared/providers/providers.dart';
 
 class HistoryFilterChart extends HookConsumerWidget {
   final String text;
@@ -20,7 +21,7 @@ class HistoryFilterChart extends HookConsumerWidget {
 
     return InkWell(
       onTap: () {
-        historyInterval.changeDaysHistoryInterval(days);
+        historyInterval.changeIntervalDays(days);
         historyInterval.setMinXChart();
         historyInterval.setMinYChart();
       },

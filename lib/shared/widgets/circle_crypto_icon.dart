@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/styles.dart';
+import '../utils/app_colors.dart';
 
 class CircleIconCrypto extends StatelessWidget {
   final String icon;

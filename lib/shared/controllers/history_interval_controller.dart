@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_2/details/controllers/details_controller.dart';
+import '../../details/controller/details_controller.dart';
 
 import '../usecases/history_interval_usecase.dart';
 
@@ -17,7 +17,7 @@ class HistoryIntervalController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void changeDaysHistoryInterval(int days){
+  void changeIntervalDays(int days){
     intervalDays = days;
     notifyListeners();
   }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CryptoInfoRow extends StatelessWidget {
-  final String infoTitle;
-  final String info;
+  final String textInfo;
+  final String valueInfo;
   final TextStyle? styleText;
   final TextStyle? styleValue;
 
   const CryptoInfoRow({
     Key? key,
-    required this.infoTitle,
-    required this.info,
+    required this.textInfo,
+    required this.valueInfo,
     required this.styleText,
     required this.styleValue,
   }) : super(key: key);
@@ -28,11 +28,11 @@ class CryptoInfoRow extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  infoTitle,
+                  textInfo,
                   style: styleText,
                 ),
                 Text(
-                  info,
+                  valueInfo,
                   style: styleValue,
                 ),
               ],

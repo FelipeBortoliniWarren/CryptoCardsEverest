@@ -1,5 +1,5 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter_application_2/shared/repo/crypto_repository.dart';
+import '../../shared/repos/crypto_repository.dart';
 
 class DetailsRepository extends CryptoRepository {
 

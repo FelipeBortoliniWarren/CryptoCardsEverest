@@ -1,6 +1,6 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter_application_2/shared/utils/assets.dart';
-import 'package:flutter_application_2/shared/model/crypto_model.dart';
+import '../utils/assets.dart';
+import '../models/crypto_model.dart';
 
 class CryptoRepository {
   List<CryptoModel> getCryptosListRepository() {

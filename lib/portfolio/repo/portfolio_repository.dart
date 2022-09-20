@@ -1,6 +1,6 @@
 import 'package:decimal/decimal.dart';
-import 'package:flutter_application_2/shared/repo/crypto_repository.dart';
-import 'package:flutter_application_2/shared/model/crypto_model.dart';
+import '../../shared/repos/crypto_repository.dart';
+import '../../shared/models/crypto_model.dart';
 
 class PortfolioRepository extends CryptoRepository {
 
