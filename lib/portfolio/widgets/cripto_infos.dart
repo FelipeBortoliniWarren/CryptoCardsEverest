@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../cripto_details/model/arguments.dart';
+import '../../details/model/arguments.dart';
+import '../../details/providers/providers.dart';
 import '../../shared/utils/styles.dart';
 import '../../shared/widgets/circle_cripto_icon.dart';
-import '../model/cripto_model.dart';
+import '../../shared/model/cripto_model.dart';
 import 'cripto_monetary_details.dart';
 
-class CriptoInfos extends StatelessWidget {
+class CriptoInfos extends HookConsumerWidget {
   final CriptoModel criptoInfo;
 
   const CriptoInfos({
@@ -15,20 +17,27 @@ class CriptoInfos extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final historyInterval = ref.watch(historyIntervalProvider);
+    
     return ListTile(
       onTap: () {
+        historyInterval.setPricesHistory(criptoInfo.historyPrice);
+        historyInterval.changeDaysHistoryInterval(5);
+        historyInterval.setMinXChart();
+        historyInterval.setMinYChart();
         Navigator.pushNamed(
           context,
           '/details',
           arguments: Arguments(
-            criptoInfo.name,
-            criptoInfo.initials,
-            criptoInfo.icon,
-            criptoInfo.price,
-            criptoInfo.amount,
-            criptoInfo.variation,
-            criptoInfo.value,
+            criptoInfo
+            // criptoInfo.name,
+            // criptoInfo.initials,
+            // criptoInfo.icon,
+            // criptoInfo.price,
+            // criptoInfo.amount,
+            // criptoInfo.variation,
+            // criptoInfo.value,
           ),
         );
       },

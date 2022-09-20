@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../provider/provider.dart';
 import '../widgets/header_portfolio.dart';
-import '../model/cripto_model.dart';
+import '../../shared/model/cripto_model.dart';
 import '../../shared/providers/providers.dart';
 
 class PortfolioPage extends StatefulHookConsumerWidget {
@@ -40,7 +40,14 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
         separatorBuilder: (context, index) => const Divider(thickness: 1),
         itemBuilder: ((context, index) {
           CriptoModel cripto = assetCriptos.getCriptosList()[index];
-          return CriptoInfos(criptoInfo: cripto);
+          return index == 0
+              ? Column(
+                  children: [
+                    const Divider(thickness: 1),
+                    CriptoInfos(criptoInfo: cripto),
+                  ],
+                )
+              : CriptoInfos(criptoInfo: cripto);
         }),
       ),
       bottomNavigationBar: const BottomNavBar(indexSelected: 0),

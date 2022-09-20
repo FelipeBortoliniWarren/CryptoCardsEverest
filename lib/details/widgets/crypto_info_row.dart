@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class InfoRow extends StatelessWidget {
+class CryptoInfoRow extends StatelessWidget {
   final String infoTitle;
   final String info;
   final TextStyle? styleText;
   final TextStyle? styleValue;
 
-  const InfoRow({
+  const CryptoInfoRow({
     Key? key,
     required this.infoTitle,
     required this.info,

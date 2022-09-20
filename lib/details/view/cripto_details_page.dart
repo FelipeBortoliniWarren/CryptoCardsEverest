@@ -1,27 +1,32 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_application_2/cripto_details/widgets/info_row.dart';
+import 'package:flutter_application_2/details/widgets/crypto_info_row.dart';
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/styles.dart';
 import '../../shared/utils/format_currency.dart';
 import '../../shared/widgets/circle_cripto_icon.dart';
 import '../model/arguments.dart';
+// import '../providers/providers.dart';
 import '../widgets/app_bar_cripto_details.dart';
-import '../widgets/cripto_graph.dart';
+import '../widgets/line_chart_widget.dart';
 import '../widgets/history_filter_chart.dart';
 
 class CriptoDetailsPage extends StatelessWidget {
   static const route = '/details';
 
   const CriptoDetailsPage({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Arguments args =
         ModalRoute.of(context)?.settings.arguments as Arguments;
+    // final historyInterval = ref.watch(historyIntervalProvider);
+    // historyInterval.setPricesHistory(args.cripto.historyPrice);
 
     return Scaffold(
       appBar: AppBarCriptoDetails(width: MediaQuery.of(context).size.width),
@@ -41,19 +46,19 @@ class CriptoDetailsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          args.nameCripto,
+                          args.cripto.name,
                           style: titleH1BlackStyle(),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          args.initialsCripto,
+                          args.cripto.initials,
                           style: subtitleGreyStyle(),
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        circleIconCripto(args.iconCripto),
+                        circleIconCripto(args.cripto.icon),
                         const SizedBox(
                           height: 22,
                         )
@@ -68,49 +73,49 @@ class CriptoDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      formatCurrency.format(args.priceCripto.toDouble()),
+                      formatCurrency.format(args.cripto.price.toDouble()),
                       style: titleH1Montserrat32(colorTextBlack),
                     ),
-                    const LineChartWidget(),
+                    LineChartWidget(historyPrice: args.cripto.historyPrice),
                     Container(
                       height: 22,
                       margin: const EdgeInsets.only(bottom: 15),
                       child: Row(
                         children: const [
-                          HistoryFilterChart(text: '5D', isSelected: true),
-                          HistoryFilterChart(text: '15D', isSelected: false),
-                          HistoryFilterChart(text: '30D', isSelected: false),
-                          HistoryFilterChart(text: '45D', isSelected: false),
-                          HistoryFilterChart(text: '90D', isSelected: false),
+                          HistoryFilterChart(text: '5D', days: 5),
+                          HistoryFilterChart(text: '15D', days: 15),
+                          HistoryFilterChart(text: '30D', days: 30),
+                          HistoryFilterChart(text: '45D', days: 45),
+                          HistoryFilterChart(text: '90D', days: 90),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              InfoRow(
+              CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.currentPrice,
-                info: formatCurrency.format(args.priceCripto.toDouble()),
+                info: formatCurrency.format(args.cripto.price.toDouble()),
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),
-              InfoRow(
+              CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.variation24,
-                info: args.variationCripto > 0
-                    ? '+${args.variationCripto}%'
-                    : '${args.variationCripto}%',
+                info: args.cripto.variation > 0
+                    ? '+${args.cripto.variation}%'
+                    : '${args.cripto.variation}%',
                 styleText: textInfoRowsDetailsStyle(),
-                styleValue: valueVariationStyle(args.variationCripto),
+                styleValue: valueVariationStyle(args.cripto.variation),
               ),
-              InfoRow(
+              CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.amount,
-                info: '${args.amountCripto} ${args.initialsCripto}',
+                info: '${args.cripto.amount} ${args.cripto.initials}',
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),
-              InfoRow(
+              CryptoInfoRow(
                 infoTitle: AppLocalizations.of(context)!.value,
-                info: formatCurrency.format(args.valueCripto.toDouble()),
+                info: formatCurrency.format(args.cripto.value.toDouble()),
                 styleText: textInfoRowsDetailsStyle(),
                 styleValue: valuesInfoRowsDetailsStyle(),
               ),
