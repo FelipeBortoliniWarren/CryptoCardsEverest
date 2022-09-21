@@ -1,4 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../portfolio/controller/portfolio_controller.dart';
 
-final criptosInfoProvider = Provider((ref) => PortfolioController());
+import '../controllers/history_interval_controller.dart';
+
+final historyIntervalProvider = ChangeNotifierProvider((ref) => HistoryIntervalController());
+
+final visibleProvider = StateProvider((ref) => true);

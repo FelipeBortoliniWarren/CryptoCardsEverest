@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-const Color colorTextBlack = Color(0xff2F2F33);
-const Color colorTextGrey = Color(0xff757680);
-const Color startGradientHide = Color.fromARGB(255, 238, 238, 238);
-const Color endGradientHide = Color.fromARGB(255, 224, 224, 224);
-const Color backgroundIconsCripto = Colors.white;
-const Color pinkWarren = Color(0xffE02B57);
 
 TextStyle bottomNavLabelsStyle() {
   return GoogleFonts.lato(
@@ -16,12 +10,11 @@ TextStyle bottomNavLabelsStyle() {
   );
 }
 
-TextStyle titlePageStyle() {
+TextStyle titleH1Montserrat32Style(Color? color) {
   return GoogleFonts.montserrat(
     fontSize: 32,
     fontWeight: FontWeight.w700,
-    color: pinkWarren,
-    letterSpacing: -1,
+    color: color,
   );
 }
 
@@ -32,11 +25,60 @@ TextStyle totalBalanceUserStyle() {
   );
 }
 
-TextStyle textTotalCoinValueStyle() {
-  return GoogleFonts.montserrat(
+TextStyle subtitleGreyStyle() {
+  return GoogleFonts.lato(
     fontSize: 17,
     fontWeight: FontWeight.w400,
     color: colorTextGrey,
-    letterSpacing: -1,
+  );
+}
+
+TextStyle titleAppBarStyle() {
+  return GoogleFonts.beVietnamPro(
+    fontSize: 21,
+    fontWeight: FontWeight.w700,
+    color: colorTextBlack,
+  );
+}
+
+TextStyle textInfoRowsDetailsStyle() {
+  return GoogleFonts.lato(
+    fontSize: 19,
+    fontWeight: FontWeight.w400,
+    color: colorTextGrey,
+  );
+}
+
+TextStyle valuesInfoRowsDetailsStyle() {
+  return GoogleFonts.lato(
+    fontSize: 19,
+    fontWeight: FontWeight.w400,
+    color: colorTextBlack,
+  );
+}
+
+TextStyle valueVariationStyle(double variation) {
+  return GoogleFonts.lato(
+    fontSize: 19,
+    fontWeight: FontWeight.bold,
+    color: (variation == 0)
+        ? colorTextGrey
+        : ((variation > 0) ? greenPositiveVariation : redNegativeVariation),
+  );
+}
+
+TextStyle textHistoryFilterChartStyle(bool isSelected) {
+  return GoogleFonts.sourceSansPro(
+    color: isSelected ? colorTextBlack : colorTextGrey,
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
+}
+
+TextStyle titleH1BlackStyle() {
+  return GoogleFonts.sourceSansPro(
+    fontSize: 34,
+    fontWeight: FontWeight.w700,
+    color: colorTextBlack,
   );
 }

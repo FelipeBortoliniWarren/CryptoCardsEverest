@@ -2,22 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/models/crypto_model.dart';
+
+import '../../shared/providers/providers.dart';
+import '../../shared/utils/app_colors.dart';
 import '../../shared/utils/format_currency.dart';
 import '../../shared/utils/styles.dart';
 import '../controller/portfolio_controller.dart';
-import '../provider/provider.dart';
-import 'hide_monetary.dart';
+import '../../shared/widgets/hide_monetary.dart';
 
 class HeaderPortfolio extends HookConsumerWidget {
   final VoidCallback changeVisibility;
-  const HeaderPortfolio({super.key, required this.changeVisibility});
+  final List<CryptoModel> cryptoInfos;
+
+  const HeaderPortfolio({
+    super.key,
+    required this.changeVisibility,
+    required this.cryptoInfos,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final visible = ref.watch(visibleProvider.state);
-    PortfolioController criptoContorller = PortfolioController();
-    double totalBalance = criptoContorller
-        .calculateTotalWallet(criptoContorller.getCriptosList());
+    PortfolioController portfolioController = PortfolioController();
+    double totalBalance = portfolioController.calculateBalancePortfolio(cryptoInfos);
 
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
@@ -28,7 +36,7 @@ class HeaderPortfolio extends HookConsumerWidget {
             children: [
               Text(
                 AppLocalizations.of(context)!.titlePortfolio,
-                style: titlePageStyle(),
+                style: titleH1Montserrat32Style(pinkWarren),
               ),
               IconButton(
                 onPressed: () => changeVisibility(),
@@ -47,8 +55,8 @@ class HeaderPortfolio extends HookConsumerWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: HideMonetary(
-                  smallWidth: 200,
-                  bigWidth: 310,
+                  hiderWidth: 200,
+                  textWidth: 310,
                   height: 39,
                   text: formatCurrency.format(totalBalance),
                   fontSize: 32,
@@ -59,7 +67,7 @@ class HeaderPortfolio extends HookConsumerWidget {
               ),
               Text(
                 AppLocalizations.of(context)!.totalCoinValue,
-                style: textTotalCoinValueStyle(),
+                style: subtitleGreyStyle(),
               ),
             ],
           ),
