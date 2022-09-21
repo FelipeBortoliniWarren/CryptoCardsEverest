@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../shared/utils/styles.dart';
+import 'package:flutter_application_2/shared/utils/styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../shared/utils/app_colors.dart';
 import '../../shared/widgets/bottom_nav_bar.dart';
 
 class MovementsPage extends StatelessWidget {
@@ -19,7 +18,7 @@ class MovementsPage extends StatelessWidget {
           children: [
             Text(
               AppLocalizations.of(context)!.titleMovements,
-              style: titleH1Montserrat32Style(colorTextBlack),
+              style: titlePageStyle(),
             ),
           ],
         ),

@@ -8,4 +8,3 @@ const String iconPolkadot = 'assets/images/polkadot.png';
 const String iconDogecoin = 'assets/images/dogecoin.png';
 const String warrenIcon = 'assets/images/warren.png';
 const String centIcon = 'assets/images/cent.png';
-const String warrenSplash = 'assets/images/warren_splash.png';

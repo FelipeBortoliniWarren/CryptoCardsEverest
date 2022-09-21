@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../shared/providers/providers.dart';
-import '../widgets/crypto_infos.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
-import '../controller/portfolio_controller.dart';
+import '../provider/provider.dart';
 import '../widgets/header_portfolio.dart';
-import '../../shared/models/crypto_model.dart';
+import '../model/cripto_model.dart';
+import '../widgets/list_criptos.dart';
+import '../../shared/providers/providers.dart';
 
 class PortfolioPage extends StatefulHookConsumerWidget {
   const PortfolioPage({Key? key}) : super(key: key);
@@ -20,15 +20,8 @@ class PortfolioPage extends StatefulHookConsumerWidget {
 class _PortfolioPageState extends ConsumerState<PortfolioPage> {
   @override
   Widget build(BuildContext context) {
-    final assetCryptos = PortfolioController();
+    final assetCriptos = ref.watch(criptosInfoProvider);
     final visible = ref.watch(visibleProvider.state);
-
-    final cryptosList = assetCryptos.getCryptosList();
-
-    for(CryptoModel crypto in cryptosList){
-      crypto.price = assetCryptos.getCurrentPrice(crypto);
-      crypto.value = assetCryptos.calculateCryptoValue(crypto.price, crypto.amount);
-    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -39,23 +32,14 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
               visible.state = !visible.state;
             });
           },
-          cryptoInfos: cryptosList,
         ),
       ),
-      body: ListView.separated(
+      body: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: cryptosList.length,
-        separatorBuilder: (context, index) => const Divider(thickness: 1),
+        itemCount: assetCriptos.getCriptosList().length,
         itemBuilder: ((context, index) {
-          CryptoModel crypto = cryptosList[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    const Divider(thickness: 1),
-                    CryptoInfos(cryptoInfo: crypto),
-                  ],
-                )
-              : CryptoInfos(cryptoInfo: crypto);
+          CriptoModel cripto = assetCriptos.getCriptosList()[index];
+          return ListCriptos(criptoInfo: cripto);
         }),
       ),
       bottomNavigationBar: const BottomNavBar(indexSelected: 0),
