@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import '../utils/styles.dart';
+import 'package:flutter_application_2/shared/utils/styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../movements/view/movements_page.dart';
-import '../../portfolio/view/portfolio_page.dart';
-import '../utils/app_colors.dart';
 import '../utils/assets.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -17,10 +14,10 @@ class BottomNavBar extends StatelessWidget {
     void changePage(int index) {
       switch (index) {
         case 0:
-          Navigator.pushNamed(context, PortfolioPage.route);
+          Navigator.pushNamed(context, '/portfolio');
           break;
         case 1:
-          Navigator.pushNamed(context, MovementsPage.route);
+          Navigator.pushNamed(context, '/movements');
           break;
       }
     }
