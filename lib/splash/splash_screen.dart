@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'portfolio/view/portfolio_page.dart';
-import 'shared/utils/assets.dart';
+import '../portfolio/view/portfolio_page.dart';
+import '../shared/utils/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
