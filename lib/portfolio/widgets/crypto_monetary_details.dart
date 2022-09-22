@@ -18,25 +18,25 @@ class CryptoMonetaryDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        HideMonetary(
-          hiderWidth: 110,
-          textWidth: 160,
-          height: 18,
-          text: formatCurrency.format(cryptoInfo.value.toDouble()),
-          fontSize: 19,
-          align: Alignment.centerRight,
-          color: colorTextBlack,
-        ),
+        // HideMonetary(
+        //   hiderWidth: 110,
+        //   textWidth: 160,
+        //   height: 18,
+        //   text: formatCurrency.format(cryptoInfo.value.toDouble()),
+        //   fontSize: 19,
+        //   align: Alignment.centerRight,
+        //   color: colorTextBlack,
+        // ),
         const SizedBox(height: 3),
-        HideMonetary(
-          hiderWidth: 70,
-          textWidth: 160,
-          height: 18,
-          text: '${cryptoInfo.amount} ${cryptoInfo.initials}',
-          fontSize: 15,
-          align: Alignment.centerRight,
-          color: colorTextGrey,
-        ),
+        // HideMonetary(
+        //   hiderWidth: 70,
+        //   textWidth: 160,
+        //   height: 18,
+        //   text: '${cryptoInfo.amount} ${cryptoInfo.symbol}',
+        //   fontSize: 15,
+        //   align: Alignment.centerRight,
+        //   color: colorTextGrey,
+        // ),
       ],
     );
   }

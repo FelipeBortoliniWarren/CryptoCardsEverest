@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../details/view/crypto_details_page.dart';
+// import '../../details/view/crypto_details_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/arguments_model.dart';
@@ -21,23 +21,23 @@ class CryptoInfos extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final historyInterval = ref.read(historyIntervalProvider);
 
-    void goDetailsPage() {
-      historyInterval.setPricesHistory(cryptoInfo.historyPrice);
-      historyInterval.changeIntervalDays(5);
-      historyInterval.setMinXChart();
-      historyInterval.setMinYChart();
-      Navigator.pushNamed(
-        context,
-        CryptoDetailsPage.route,
-        arguments: ArgumentsModel(cryptoInfo),
-      );
-    }
+    // void goDetailsPage() {
+    //   historyInterval.setPricesHistory(cryptoInfo.historyPrice);
+    //   historyInterval.changeIntervalDays(5);
+    //   historyInterval.setMinXChart();
+    //   historyInterval.setMinYChart();
+    //   Navigator.pushNamed(
+    //     context,
+    //     CryptoDetailsPage.route,
+    //     arguments: ArgumentsModel(cryptoInfo),
+    //   );
+    // }
 
     return ListTile(
-      onTap: () => goDetailsPage(),
-      leading: CircleIconCrypto(icon: cryptoInfo.icon),
+      // onTap: () => goDetailsPage(),
+      leading: CircleIconCrypto(icon: cryptoInfo.image),
       title: Text(
-        cryptoInfo.initials,
+        cryptoInfo.symbol.toUpperCase(),
         style: const TextStyle(fontSize: 19),
       ),
       subtitle: Text(
@@ -54,7 +54,8 @@ class CryptoInfos extends HookConsumerWidget {
             cryptoInfo: cryptoInfo,
           ),
           IconButton(
-            onPressed: () => goDetailsPage(),
+            // onPressed: () => goDetailsPage(),
+            onPressed: () {},
             icon: const Icon(Icons.keyboard_arrow_right),
             iconSize: 20,
             splashRadius: 20,

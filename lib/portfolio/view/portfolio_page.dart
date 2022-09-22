@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/shared/providers/crypto_provider.dart';
 import '../../shared/providers/providers.dart';
-import '../widgets/crypto_infos.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../controller/portfolio_controller.dart';
 import '../widgets/header_portfolio.dart';
-import '../../shared/models/crypto_model.dart';
+import '../widgets/portfolio_body.dart';
 
 class PortfolioPage extends StatefulHookConsumerWidget {
   const PortfolioPage({Key? key}) : super(key: key);
@@ -23,40 +23,33 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
     final assetCryptos = PortfolioController();
     final visible = ref.watch(visibleProvider.state);
 
-    final cryptosList = assetCryptos.getCryptosList();
+    final getCryptoProvider = ref.watch(cryptoProvider);
 
-    for(CryptoModel crypto in cryptosList){
-      crypto.price = assetCryptos.getCurrentPrice(crypto);
-      crypto.value = assetCryptos.calculateCryptoValue(crypto.price, crypto.amount);
-    }
+    // final cryptosList = assetCryptos.getCryptosList();
+
+    // for(CryptoModel crypto in cryptosList){
+    //   crypto.price = assetCryptos.getCurrentPrice(crypto);
+    //   crypto.value = assetCryptos.calculateCryptoValue(crypto.price, crypto.amount);
+    // }
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(160),
-        child: HeaderPortfolio(
-          changeVisibility: () {
-            setState(() {
-              visible.state = !visible.state;
-            });
-          },
-          cryptoInfos: cryptosList,
-        ),
-      ),
-      body: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        itemCount: cryptosList.length,
-        separatorBuilder: (context, index) => const Divider(thickness: 1),
-        itemBuilder: ((context, index) {
-          CryptoModel crypto = cryptosList[index];
-          return index == 0
-              ? Column(
-                  children: [
-                    const Divider(thickness: 1),
-                    CryptoInfos(cryptoInfo: crypto),
-                  ],
-                )
-              : CryptoInfos(cryptoInfo: crypto);
-        }),
+      // appBar: PreferredSize(
+      //   preferredSize: const Size.fromHeight(160),
+      //   child: HeaderPortfolio(
+      //     changeVisibility: () {
+      //       setState(() {
+      //         visible.state = !visible.state;
+      //       });
+      //     },
+      //     // cryptoInfos: cryptosList,
+      //   ),
+      // ),
+      // ),
+      body: Center(
+        child: getCryptoProvider.when(
+            data: (cryptos) => PortolioBody(cryptos: cryptos),
+            error: ((error, stackTrace) => const Text('Erro!')),
+            loading: () => const CircularProgressIndicator()),
       ),
       bottomNavigationBar: const BottomNavBar(indexSelected: 0),
     );

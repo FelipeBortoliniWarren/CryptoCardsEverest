@@ -6,11 +6,11 @@ part 'crypto_market_data_response.g.dart';
 
 @JsonSerializable()
 class CryptoMarketDataResponse {
-  final double price_change_percentage_24h;
+  // final double price_change_percentage_24h;
   final CryptoCurrentPriceResponse current_price;
 
   CryptoMarketDataResponse({
-    required this.price_change_percentage_24h,
+    // required this.price_change_percentage_24h,
     required this.current_price,
   });
 

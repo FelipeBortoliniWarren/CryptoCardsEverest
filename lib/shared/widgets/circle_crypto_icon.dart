@@ -15,9 +15,7 @@ class CircleIconCrypto extends StatelessWidget {
     return CircleAvatar(
       backgroundColor: white,
       radius: 24,
-      child: Image(
-        image: AssetImage(icon),
-      ),
+      child: Image.network(icon),
     );
   }
 }

@@ -25,7 +25,7 @@ class HeaderPortfolio extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final visible = ref.watch(visibleProvider.state);
     PortfolioController portfolioController = PortfolioController();
-    double totalBalance = portfolioController.calculateBalancePortfolio(cryptoInfos);
+    // double totalBalance = portfolioController.calculateBalancePortfolio(cryptoInfos);
 
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
@@ -54,16 +54,16 @@ class HeaderPortfolio extends HookConsumerWidget {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                child: HideMonetary(
-                  hiderWidth: 200,
-                  textWidth: 310,
-                  height: 39,
-                  text: formatCurrency.format(totalBalance),
-                  fontSize: 32,
-                  align: Alignment.centerLeft,
-                  color: colorTextBlack,
-                  style: totalBalanceUserStyle(),
-                ),
+                // child: HideMonetary(
+                //   hiderWidth: 200,
+                //   textWidth: 310,
+                //   height: 39,
+                //   // text: formatCurrency.format(totalBalance),
+                //   fontSize: 32,
+                //   align: Alignment.centerLeft,
+                //   color: colorTextBlack,
+                //   style: totalBalanceUserStyle(),
+                // ),
               ),
               Text(
                 AppLocalizations.of(context)!.totalCoinValue,
