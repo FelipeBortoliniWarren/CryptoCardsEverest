@@ -27,7 +27,7 @@ extension GetAllCryptosMapper on GetAllCryptosResponse {
       );
     }).toList();
 
-    list.retainWhere((element) => ids.contains(element.id));
+    list.retainWhere((crypto) => ids.contains(crypto.id));
 
     return list;
   }
