@@ -7,7 +7,7 @@ class CryptoModel {
   String image;
   Decimal price;
   // List<List> historyPrice;
-  // double variation;
+  double variation;
   
   CryptoModel({
     required this.id,
@@ -16,6 +16,6 @@ class CryptoModel {
     required this.image,
     required this.price,
     // required this.historyPrice,
-    // required this.variation,
+    required this.variation,
   });
 }

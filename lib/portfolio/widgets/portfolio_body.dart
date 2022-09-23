@@ -21,7 +21,7 @@ class PortolioBody extends StatelessWidget {
       itemCount: cryptos.length,
       separatorBuilder: (context, index) => const Divider(thickness: 1),
       itemBuilder: ((context, index) {
-        CryptoModel crypto = cryptos[index];
+        CryptoModel? crypto = cryptos[index];
         return index == 0
             ? Column(
                 children: [

@@ -36,7 +36,6 @@ class CryptoResponse {
   }
 
   factory CryptoResponse.fromMap(Map<String, dynamic> map) {
-    print(map);
     return CryptoResponse(
       id: map['id'] ?? '',
       symbol: map['symbol'] ?? '',
@@ -44,12 +43,13 @@ class CryptoResponse {
       image: CryptoImageResponse(
           map['image']['thumb'], map['image']['small'], map['image']['large']),
       market_data: CryptoMarketDataResponse(
-        current_price: CryptoCurrentPriceResponse(
-          brl: Decimal.parse(
-            map['market_data']['current_price']['brl'].toString(),
+          current_price: CryptoCurrentPriceResponse(
+            brl: Decimal.parse(
+              map['market_data']['current_price']['brl'].toString(),
+            ),
           ),
-        ),
-      ),
+          price_change_percentage_24h: map['market_data']
+              ['price_change_percentage_24h']),
     );
   }
 

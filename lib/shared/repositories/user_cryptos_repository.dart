@@ -3,7 +3,7 @@ import '../models/user_cryptos_model.dart';
 
 class UserCryptosRepository {
   List<UserCryptosModel> getCryptosListRepository() {
-    List<UserCryptosModel> cryptosList = [
+    return [
       UserCryptosModel(
         cryptoId: 'bitcoin',
         amount: 3.5,
@@ -45,6 +45,9 @@ class UserCryptosRepository {
         value: Decimal.parse('0'),
       ),
     ];
-    return cryptosList;
+  }
+
+  Decimal calculateUserCryptoBalance(double amount, Decimal price) {
+    return Decimal.parse(amount.toString()) * price;
   }
 }
