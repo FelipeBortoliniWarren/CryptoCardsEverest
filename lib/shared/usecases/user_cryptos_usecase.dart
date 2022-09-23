@@ -1,16 +1,22 @@
 import 'package:decimal/decimal.dart';
 
-import '../models/user_cryptos_model.dart';
+import '../models/crypto_model.dart';
+import '../models/user_crypto_model.dart';
+import '../models/user_list_cryptos_model.dart';
 import '../repositories/user_cryptos_repository.dart';
 
-class UserCryptosUsecase {
-  UserCryptosRepository repository = UserCryptosRepository();
+class UserListCryptosUsecase {
+  UserListCryptosRepository repository = UserListCryptosRepository();
 
-  Decimal calculateUserCryptoBalance(double amount, Decimal price) {
-    return repository.calculateUserCryptoBalance(amount, price);
+  void calculateUserCryptoBalance(List<CryptoModel> cryptos, UserListCryptosModel userCryptos) {
+    repository.calculateUserCryptoBalance(cryptos, userCryptos);
   }
 
-  List<UserCryptosModel> getCryptosListRepository(){
+  void calculateTotalBalanceUserRepository(List<CryptoModel> cryptos, UserListCryptosModel userCryptos) {
+    return repository.calculateTotalBalanceUserRepository(cryptos, userCryptos);
+  }
+
+  UserListCryptosModel getCryptosListRepository(){
     return repository.getCryptosListRepository();
   }
 }

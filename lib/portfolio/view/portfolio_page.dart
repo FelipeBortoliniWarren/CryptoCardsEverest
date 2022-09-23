@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/shared/models/crypto_model.dart';
 import 'package:flutter_application_2/shared/providers/crypto_provider.dart';
-import '../../shared/models/user_cryptos_model.dart';
+import 'package:flutter_application_2/splash/splash_screen.dart';
+import '../../shared/models/user_crypto_model.dart';
 import '../../shared/providers/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/user_cryptos_provider.dart';
+import '../../shared/providers/user_list_cryptos_provider.dart';
 import '../../shared/widgets/bottom_nav_bar.dart';
 import '../controller/portfolio_controller.dart';
 import '../widgets/header_portfolio.dart';
@@ -27,8 +28,9 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
     final visible = ref.watch(visibleProvider.state);
 
     final getCryptosProvider = ref.watch(cryptoProvider);
+    final listCryptoUserProvider = ref.watch(userListCryptosProvider);
+    final userListCryptos = listCryptoUserProvider.getCryptosListRepository();
     // final cryptosUserProvider = ref.watch(userCryptosProvider);
-    
 
     // final cryptosList = assetCryptos.getCryptosList();
 
@@ -37,26 +39,34 @@ class _PortfolioPageState extends ConsumerState<PortfolioPage> {
     //   crypto.value = assetCryptos.calculateCryptoValue(crypto.price, crypto.amount);
     // }
 
-    return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(160),
-      //   child: HeaderPortfolio(
-      //     changeVisibility: () {
-      //       setState(() {
-      //         visible.state = !visible.state;
-      //       });
-      //     },
-      //     // cryptoInfos: cryptosList,
-      //   ),
-      // ),
-      // ),
-      body: Center(
-        child: getCryptosProvider.when(
-            data: (cryptos) => PortolioBody(cryptos: cryptos),
-            error: ((error, stackTrace) => const Text('Erro!')),
-            loading: () => const CircularProgressIndicator()),
+    return getCryptosProvider.when(
+      data: (cryptos) => Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(160),
+          child: HeaderPortfolio(
+            changeVisibility: () {
+              setState(() {
+                visible.state = !visible.state;
+              });
+            },
+            cryptoInfos: cryptos,
+            listCryptoUserProvider: listCryptoUserProvider,
+          ),
+        ),
+        body: Center(
+          child: getCryptosProvider.when(
+              data: (cryptos) => PortolioBody(
+                    cryptos: cryptos,
+                    userCryptos: userListCryptos,
+                    listCryptoUserProvider: listCryptoUserProvider,
+                  ),
+              error: ((error, stackTrace) => const Text('Erro!')),
+              loading: () => const CircularProgressIndicator()),
+        ),
+        bottomNavigationBar: const BottomNavBar(indexSelected: 0),
       ),
-      bottomNavigationBar: const BottomNavBar(indexSelected: 0),
+      error: ((error, stackTrace) => const Text('Erro!')),
+      loading: () => const SplashScreen(),
     );
   }
 }

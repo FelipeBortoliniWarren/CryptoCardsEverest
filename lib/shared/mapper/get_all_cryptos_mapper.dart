@@ -1,16 +1,18 @@
 import 'package:flutter_application_2/shared/api/models/get_all_cryptos_response.dart';
 import 'package:flutter_application_2/shared/models/crypto_model.dart';
-import 'package:flutter_application_2/shared/models/user_cryptos_model.dart';
+import 'package:flutter_application_2/shared/models/user_crypto_model.dart';
 import 'package:flutter_application_2/shared/repositories/user_cryptos_repository.dart';
+
+import '../models/user_list_cryptos_model.dart';
 
 extension GetAllCryptosMapper on GetAllCryptosResponse {
   List<CryptoModel> toViewData() {
-    UserCryptosRepository repo = UserCryptosRepository();
-    List<UserCryptosModel> cryptos = repo.getCryptosListRepository();
+    UserListCryptosRepository repo = UserListCryptosRepository();
+    UserListCryptosModel cryptos = repo.getCryptosListRepository();
 
     List ids = [];
 
-    for (UserCryptosModel crypto in cryptos) {
+    for (UserCryptoModel crypto in cryptos.listCryptos) {
       ids.add(crypto.cryptoId);
     }
 

@@ -1,11 +1,11 @@
 import 'package:decimal/decimal.dart';
 
-class UserCryptosModel {
+class UserCryptoModel {
   String cryptoId;
   double amount;
   Decimal value;
 
-  UserCryptosModel({
+  UserCryptoModel({
     required this.cryptoId,
     required this.amount,
     required this.value,

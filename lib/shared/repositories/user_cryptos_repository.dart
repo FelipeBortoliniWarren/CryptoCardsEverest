@@ -1,53 +1,74 @@
 import 'package:decimal/decimal.dart';
-import '../models/user_cryptos_model.dart';
+import '../models/crypto_model.dart';
+import '../models/user_crypto_model.dart';
+import '../models/user_list_cryptos_model.dart';
 
-class UserCryptosRepository {
-  List<UserCryptosModel> getCryptosListRepository() {
-    return [
-      UserCryptosModel(
-        cryptoId: 'bitcoin',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'ethereum',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'litecoin',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'tether',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'binancecoin',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'cardano',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'polkadot',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-      UserCryptosModel(
-        cryptoId: 'dogecoin',
-        amount: 3.5,
-        value: Decimal.parse('0'),
-      ),
-    ];
+class UserListCryptosRepository {
+  UserListCryptosModel getCryptosListRepository() {
+    return UserListCryptosModel(
+      listCryptos: [
+        UserCryptoModel(
+          cryptoId: 'bitcoin',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'ethereum',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'litecoin',
+          amount: 6.8,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'tether',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'binancecoin',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'cardano',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'polkadot',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+        UserCryptoModel(
+          cryptoId: 'dogecoin',
+          amount: 3.5,
+          value: Decimal.parse('0'),
+        ),
+      ],
+      totalBalance: Decimal.parse('0'),
+    );
   }
 
-  Decimal calculateUserCryptoBalance(double amount, Decimal price) {
-    return Decimal.parse(amount.toString()) * price;
+  void calculateTotalBalanceUserRepository(List<CryptoModel> cryptos, UserListCryptosModel userCryptos) {
+    String id = '';
+    UserCryptoModel userCrypto;
+    for (CryptoModel crypto in cryptos) {
+      id = crypto.id;
+      userCrypto = userCryptos.listCryptos.firstWhere((element) => element.cryptoId == id);
+      userCryptos.totalBalance += Decimal.parse(userCrypto.amount.toString()) * crypto.price;
+    }
+  }
+
+  void calculateUserCryptoBalance(List<CryptoModel> cryptos, UserListCryptosModel userCryptos) {
+    String id = '';
+    CryptoModel crypto;
+    for (UserCryptoModel userCrypto in userCryptos.listCryptos) {
+      id = userCrypto.cryptoId;
+      crypto = cryptos.firstWhere((element) => element.id == id);
+      userCrypto.value = Decimal.parse(userCrypto.amount.toString()) * crypto.price;
+    }
   }
 }
